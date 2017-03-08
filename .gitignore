@@ -40,3 +40,16 @@ bower.json
 
 # Ignore Byebug command history file.
 .byebug_history
+
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# React on Rails
+npm-debug.log*
+node_modules
+
+# Generated js bundles
+/app/assets/webpack/*
