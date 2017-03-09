@@ -12,6 +12,7 @@ class Task < ApplicationRecord
       end
 
    def update_duration
-       self.duration = 1234 #TODO
+       duration = self.segments.sum(:duration)
+       update_column(:duration, duration)
    end
 end
