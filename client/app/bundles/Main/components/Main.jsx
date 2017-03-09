@@ -27,12 +27,12 @@ export default class Main extends React.Component {
         return (
             <div>
                 <h3>
-                    Hello, {this.state.name}!
+                    Hello, {this.state.code}!
                 </h3>
                 <hr/>
                 <form >
                     <label htmlFor="name">
-                        Current code is
+                        Change current code code is
                     </label>
                     <input id="code" type="text" value={this.state.code} onChange={(e) => this.updateCode(e.target.value)}/>
                 </form>

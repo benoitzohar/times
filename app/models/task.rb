@@ -7,12 +7,11 @@ class Task < ApplicationRecord
 
     before_create :do_before_create
       def do_before_create
-        self.code = 'TODO'
         self.created_at = Time.now
         self.updated_at = Time.now
       end
 
    def update_duration
-       self.duration = 1234
+       self.duration = 1234 #TODO
    end
 end

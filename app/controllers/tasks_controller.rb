@@ -4,12 +4,13 @@ class TasksController < ApplicationController
 
   # GET /tasks
   def index
-    @tasks = Task.all
+    @tasks = Task.where(code: get_code)
     json_response(@tasks)
   end
 
   # POST /tasks
   def create
+    params[:code] = get_code(request)
     @task = Task.create!(task_params)
     json_response(@task, :created)
   end
@@ -35,10 +36,16 @@ class TasksController < ApplicationController
 
   def task_params
     # whitelist params
-    params.permit(:title, :duration)
+    params.permit(:code, :title, :duration)
   end
 
   def set_task
     @task = Task.find(params[:id])
+
+    #ensure the code is correct
+    if @task.code != get_code(request)
+        head :no_content
+    end
   end
+
 end

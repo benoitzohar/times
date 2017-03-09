@@ -41,6 +41,11 @@ class SegmentsController < ApplicationController
 
   def set_task
     @task = Task.find(params[:task_id])
+
+    #ensure the code is correct
+    if @task.code != get_code(request)
+        head :no_content
+    end
   end
 
   def set_task_segment
