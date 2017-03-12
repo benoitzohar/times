@@ -1,6 +1,6 @@
 import ReactOnRails from 'react-on-rails';
 
-import Main from '../components/Main';
+import MainApp from './MainApp';
 
-// This is how react_on_rails can see the Main in the browser.
-ReactOnRails.register({Main});
+// This is how react_on_rails can see the Main App in the browser.
+ReactOnRails.register({MainApp});

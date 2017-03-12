@@ -1,0 +1,1 @@
+export const MAIN_CODE_UPDATE = 'MAIN_CODE_UPDATE'

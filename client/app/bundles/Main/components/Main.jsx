@@ -4,7 +4,8 @@ import List from './List'
 
 export default class Main extends React.Component {
     static propTypes = {
-        code: PropTypes.string.isRequired, // this is passed from the Rails view
+        code: PropTypes.string.isRequired,
+        updateCode: PropTypes.func.isRequired
     };
 
     /**
