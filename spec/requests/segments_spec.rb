@@ -7,7 +7,7 @@ RSpec.describe 'Segments API' do
 
   # Test suite for GET /tasks/:task_id/segments
   describe 'GET /tasks/:task_id/segments' do
-    before { get "/tasks/#{task_id}/segments" }
+    before { get "/tasks/#{task_id}/segments", params: nil, headers:{'Authorization' => task.code} }
 
     context 'when task exists' do
       it 'returns status code 200' do
@@ -34,7 +34,7 @@ RSpec.describe 'Segments API' do
 
   # Test suite for GET /tasks/:task_id/segments/:id
   describe 'GET /tasks/:task_id/segments/:id' do
-    before { get "/tasks/#{task_id}/segments/#{id}" }
+    before { get "/tasks/#{task_id}/segments/#{id}", params: nil, headers:{'Authorization' => task.code} }
 
     context 'when task segment exists' do
       it 'returns status code 200' do
@@ -64,7 +64,7 @@ RSpec.describe 'Segments API' do
     let(:valid_attributes) { { title: 'Visit Narnia', startdate: Faker::Date.backward(1) } }
 
     context 'when request attributes are valid' do
-      before { post "/tasks/#{task_id}/segments", params: valid_attributes }
+      before { post "/tasks/#{task_id}/segments", params: valid_attributes, headers:{'Authorization' => task.code} }
 
       it 'returns status code 201' do
         expect(response).to have_http_status(201)
@@ -72,7 +72,7 @@ RSpec.describe 'Segments API' do
     end
 
     context 'when an invalid request' do
-      before { post "/tasks/#{task_id}/segments", params: {} }
+      before { post "/tasks/#{task_id}/segments", params: {}, headers:{'Authorization' => task.code}   }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
@@ -88,7 +88,7 @@ RSpec.describe 'Segments API' do
   describe 'PUT /tasks/:task_id/segments/:id' do
     let(:valid_attributes) { { title: 'Mozart', startdate: Faker::Date.backward(1) } }
 
-    before { put "/tasks/#{task_id}/segments/#{id}", params: valid_attributes }
+    before { put "/tasks/#{task_id}/segments/#{id}", params: valid_attributes, headers:{'Authorization' => task.code} }
 
     context 'when segment exists' do
       it 'returns status code 204' do
@@ -116,7 +116,7 @@ RSpec.describe 'Segments API' do
 
   # Test suite for DELETE /tasks/:id
   describe 'DELETE /tasks/:id' do
-    before { delete "/tasks/#{task_id}/segments/#{id}" }
+    before { delete "/tasks/#{task_id}/segments/#{id}", headers:{'Authorization' => task.code} }
 
     it 'returns status code 204' do
       expect(response).to have_http_status(204)

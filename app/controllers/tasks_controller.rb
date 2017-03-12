@@ -4,7 +4,7 @@ class TasksController < ApplicationController
 
   # GET /tasks
   def index
-    @tasks = Task.where(code: get_code)
+    @tasks = Task.where(code: get_code(request))
     json_response(@tasks)
   end
 
