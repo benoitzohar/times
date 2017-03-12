@@ -1,8 +1,6 @@
 import React, {PropTypes} from 'react';
 
-import List from './List'
-
-export default class Main extends React.Component {
+export default class List extends React.Component {
     static propTypes = {
         code: PropTypes.string.isRequired, // this is passed from the Rails view
     };
@@ -27,19 +25,7 @@ export default class Main extends React.Component {
 
     render() {
         return (
-            <div>
-                <h3>
-                    Hello, {this.state.code}!
-                    <List></List>
-                </h3>
-                <hr/>
-                <form >
-                    <label htmlFor="name">
-                        Change current code code is
-                    </label>
-                    <input id="code" type="text" value={this.state.code} onChange={(e) => this.updateCode(e.target.value)}/>
-                </form>
-            </div>
+            <div className="list"></div>
         );
     }
 }
