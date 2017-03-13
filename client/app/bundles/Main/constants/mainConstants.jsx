@@ -1,1 +1,1 @@
-export const MAIN_CODE_UPDATE = 'MAIN_CODE_UPDATE'
+export const TASK_SELECT = 'TASK_SELECT'

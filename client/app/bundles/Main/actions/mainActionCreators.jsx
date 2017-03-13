@@ -1,3 +1,3 @@
-import {MAIN_CODE_UPDATE} from '../constants/mainConstants'
+import {TASK_SELECT} from '../constants/mainConstants'
 
-export const updateCode = (text) => ({type: MAIN_CODE_UPDATE, text})
+export const selectTask = (task) => ({type: TASK_SELECT, task})

@@ -1,6 +1,9 @@
 class MainController < ApplicationController
   def index
-    @main_props = { code: params[:code] }
+    @main_props = {
+        code: params[:code],
+        tasks: Task.where({code: params[:code]})
+    }
   end
 
   def code_generator
