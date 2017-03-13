@@ -1,6 +1,6 @@
-import React, {PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 
-import TaskList from './TaskList'
+import TaskList from './TaskList';
 
 export default class Main extends React.Component {
     static propTypes = {
@@ -9,9 +9,9 @@ export default class Main extends React.Component {
     };
 
     /**
-   * @param props - Comes from your rails view.
-   * @param _railsContext - Comes from React on Rails
-   */
+    * @param props - Comes from your rails view.
+    * @param _railsContext - Comes from React on Rails
+    */
     constructor(props, _railsContext) {
         super(props);
 
@@ -26,9 +26,9 @@ export default class Main extends React.Component {
     render() {
         return (
             <div>
-                <TaskList tasks={this.state.tasks}/>
-                <div className="panel"></div>
-                <button >Add</button>
+                <TaskList tasks={this.state.tasks} />
+                <div className="panel" />
+                <button>Add</button>
             </div>
         );
     }

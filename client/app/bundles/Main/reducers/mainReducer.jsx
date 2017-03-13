@@ -1,20 +1,20 @@
-import {combineReducers} from 'redux'
-import {TASK_SELECT} from '../constants/mainConstants'
+import { combineReducers } from 'redux';
+import { TASK_SELECT } from '../constants/mainConstants';
 
 const code = (state, action) => {
-    console.log("[debug] action, state", action, state)
+    console.log('[debug] action, state', action, state);
     return state;
-}
+};
 
 const tasks = (state = '', action) => {
     switch (action.type) {
         case TASK_SELECT:
-            return action.task
+            return action.task;
         default:
-            return state
+            return state;
     }
-}
+};
 
-const mainReducer = combineReducers({code, tasks})
+const mainReducer = combineReducers({ code, tasks });
 
-export default mainReducer
+export default mainReducer;

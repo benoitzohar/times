@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 
 export default class TaskList extends React.Component {
     static propTypes = {
@@ -16,8 +16,6 @@ export default class TaskList extends React.Component {
     }
 
     render() {
-        return (
-            <div className="task-list"></div>
-        );
+        return <div className="task-list" />;
     }
 }

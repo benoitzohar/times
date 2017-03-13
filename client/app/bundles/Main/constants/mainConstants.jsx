@@ -1,1 +1,1 @@
-export const TASK_SELECT = 'TASK_SELECT'
+export const TASK_SELECT = 'TASK_SELECT';
