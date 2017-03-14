@@ -10,5 +10,9 @@
         "postinstall": "cd client && yarn install",
         "dev": "echo 'visit http://localhost:3000' && foreman start -f Procfile.dev",
         "test": "rspec"
+    },
+    "dependencies": {
+        "create-react-native-app": "^0.0.3",
+        "global": "^4.3.1"
     }
 }
