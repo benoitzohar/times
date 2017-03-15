@@ -1,24 +1,28 @@
-# README
+# Times
+[times.poi.lu](times.poi.lu)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+*[WIP, do not use yet]*
 
-Things you may want to cover:
+Times is a simple web app that allows you to track time spent on some tasks.
 
-* Ruby version
+It has a Ruby on Rails back-end which provides a REST API and a React (Redux) front-end.
 
-* System dependencies
 
-* Configuration
+There is no auth but a simple token is generated everytime someone goes to the root url.
+This token allows the user to have it's own space on the app, however you should not consider the data you add in the app as private...
 
-* Database creation
+You can use the demo tool or install it yourself on heroku, it's ready for production!
 
-* Database initialization
 
-* How to run the test suite
+* **Ruby version:**  
+    2.4
 
-* Services (job queues, cache servers, search engines, etc.)
+* **Configuration:**  
+    `rake db`
+    `rake db:migrate`
 
-* Deployment instructions
+* **Develop:**  
+    `yarn dev`
 
-* ...
+* **Run the test suite:**  
+    `yarn test`
