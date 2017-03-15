@@ -5,3 +5,5 @@ sudo: required
 dist: trusty
 services:
   - postgresql
+before_script:
+  - psql -c 'create database times_test;' -U postgres
