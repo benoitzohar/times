@@ -1,5 +1,7 @@
+[![Travis](https://img.shields.io/travis/benoitzohar/times.svg)](https://travis-ci.org/benoitzohar/times)
+
 # Times
-[times.poi.lu](times.poi.lu)
+[times.poi.lu](http://times.poi.lu)
 
 *[WIP, do not use yet]*
 
