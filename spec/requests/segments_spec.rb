@@ -59,7 +59,7 @@ RSpec.describe 'Segments API' do
     end
   end
 
-  # Test suite for PUT /tasks/:task_id/segments
+  # Test suite for POST /tasks/:task_id/segments
   describe 'POST /tasks/:task_id/segments' do
     let(:valid_attributes) { { title: 'Visit Narnia', startdate: Faker::Date.backward(1) } }
 

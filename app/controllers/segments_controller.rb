@@ -24,7 +24,7 @@ class SegmentsController < ApplicationController
   def update
     @segment.update(segment_params)
     @task.update_duration
-    json_response(@segment)
+    head :no_content
   end
 
   # DELETE /tasks/:task_id/segments/:id
