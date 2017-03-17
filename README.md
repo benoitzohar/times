@@ -15,6 +15,7 @@ This token allows the user to have it's own space on the app, however you should
 
 You can use the demo tool or install it yourself on heroku, it's ready for production!
 
+# USAGE
 
 * **Ruby version:**  
     2.4
@@ -28,3 +29,7 @@ You can use the demo tool or install it yourself on heroku, it's ready for produ
 
 * **Run the test suite:**  
     `yarn test`
+
+## LICENSE
+
+MIT (c) [Benoit Zohar](https://github.com/benoitzohar)
