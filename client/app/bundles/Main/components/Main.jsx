@@ -5,7 +5,9 @@ import TaskList from './TaskList';
 export default class Main extends React.Component {
     static propTypes = {
         tasks: PropTypes.array.isRequired,
-        selectTask: PropTypes.func.isRequired
+        selectTask: PropTypes.func.isRequired,
+        addTask: PropTypes.func.isRequired,
+        removeTask: PropTypes.func.isRequired
     };
 
     /**
@@ -15,8 +17,6 @@ export default class Main extends React.Component {
     constructor(props, _railsContext) {
         super(props);
 
-        // How to set initial state in ES6 class syntax
-        // https://facebook.github.io/react/docs/reusable-components.html#es6-classes
         this.state = {
             tasks: this.props.tasks,
             currentTask: null
@@ -26,9 +26,12 @@ export default class Main extends React.Component {
     render() {
         return (
             <div>
-                <TaskList tasks={this.state.tasks} />
-                <div className="panel" />
-                <button>Add</button>
+                <TaskList
+                    tasks={this.state.tasks}
+                    addTask={this.props.addTask}
+                    selectTask={this.props.selectTask}
+                />
+
             </div>
         );
     }
