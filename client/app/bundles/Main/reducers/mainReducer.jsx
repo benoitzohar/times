@@ -2,18 +2,17 @@ import { combineReducers } from 'redux';
 import { uniqueId, remove } from 'lodash';
 
 const code = (state = '', action) => {
-    console.log('[debug] action, state', action, state);
     return state;
 };
 
 const tasks = (state = [], action) => {
-    console.log('[debug] tasks action:', state, action);
     switch (action.type) {
         case 'TASK_SELECT':
-            state.map(task => {
+            const tasks = [...state];
+            tasks.map(task => {
                 task.current = task.id === action.id;
             });
-            return [...state];
+            return tasks;
 
         case 'TASK_ADD':
             return [

@@ -10,7 +10,7 @@ function Main(props) {
                 selectTask={props.selectTask}
                 removeTask={props.removeTask}
             />
-
+            <SegmentPanel segments={props.segments} />
         </div>
     );
 }

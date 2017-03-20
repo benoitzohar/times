@@ -20,7 +20,10 @@ function TaskList(props) {
     );
 }
 TaskList.propTypes = {
-    tasks: PropTypes.array.isRequired
+    tasks: PropTypes.array.isRequired,
+    addTask: PropTypes.func.isRequired,
+    selectTask: PropTypes.func.isRequired,
+    removeTask: PropTypes.func.isRequired
 };
 
 export default TaskList;

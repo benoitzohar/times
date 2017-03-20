@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 
 function Task(props) {
-    console.log('[debug] props', props);
     return (
         <div className="task">
             {props.title} {props.current ? <span>selected</span> : null}
@@ -13,7 +12,9 @@ function Task(props) {
 
 Task.propTypes = {
     title: PropTypes.string.isRequired,
-    current: PropTypes.bool
+    current: PropTypes.bool,
+    onSelect: PropTypes.func.isRequired,
+    onDelete: PropTypes.func.isRequired
 };
 
 export default Task;
