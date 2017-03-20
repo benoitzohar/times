@@ -1,4 +1,3 @@
-export const selectTask = task => ({ type: 'TASK_SELECT', task });
-
-export const addTask = task => ({ type: 'TASK_ADD', task });
-export const removeTask = task => ({ type: 'TASK_REMOVE', task });
+export const selectTask = id => ({ type: 'TASK_SELECT', id });
+export const addTask = title => ({ type: 'TASK_ADD', title });
+export const removeTask = id => ({ type: 'TASK_REMOVE', id });

@@ -8,10 +8,12 @@ function TaskList(props) {
                 <Task
                     key={task.id}
                     title={task.title}
-                    onClick={() => props.selectTask(task)}
+                    current={task.current}
+                    onSelect={() => props.selectTask(task.id)}
+                    onDelete={() => props.removeTask(task.id)}
                 />
             ))}
-            <button onClick={() => props.addTask()}>
+            <button onClick={() => props.addTask('New task')}>
                 Add
             </button>
         </div>
