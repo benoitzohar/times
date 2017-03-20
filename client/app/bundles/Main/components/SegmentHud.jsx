@@ -11,8 +11,8 @@ function SegmentHud(props) {
 
 SegmentHud.propTypes = {
     segment: PropTypes.object,
-    onPlay: PropTypes.function.required,
-    onFinish: PropTypes.function.required
+    onPlay: PropTypes.func.isRequired,
+    onFinish: PropTypes.func.isRequired
 };
 
 export default SegmentHud;

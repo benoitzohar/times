@@ -4,8 +4,7 @@ import * as taskActions from '../actions/taskActions';
 
 // Which part of the Redux global state does our component want to receive as props?
 const mapStateToProps = state => {
-    console.log('[debug] mapStateToProps', state);
-    return { code: state.code, tasks: state.tasks };
+    return { code: state.code, tasks: state.tasks, segments: state.segments };
 };
 
 // Don't forget to actually use connect!

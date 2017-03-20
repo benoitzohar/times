@@ -29,6 +29,27 @@ const tasks = (state = [], action) => {
     }
 };
 
-const mainReducer = combineReducers({ code, tasks });
+const segments = (state = [], action) => {
+    switch (action.type) {
+        case 'SEGMENT_ADD':
+            return [
+                ...state,
+                {
+                    id: 'tmp-segment-' + uniqueId(),
+                    title: action.title,
+                    startdate: new Date()
+                }
+            ];
+
+        case 'SEGMENT_REMOVE':
+            remove(state, { id: action.id });
+            return [...state];
+
+        default:
+            return state;
+    }
+};
+
+const mainReducer = combineReducers({ code, tasks, segments });
 
 export default mainReducer;
