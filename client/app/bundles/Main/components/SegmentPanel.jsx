@@ -13,7 +13,7 @@ function SegmentPanel(props) {
         <div className="segment-panel">
             <SegmentHud
                 segment={mainSegment}
-                setTitle={updateSegmentTitle}
+                setTitle={props.updateSegmentTitle}
                 onPlay={props.addSegment}
                 onPause={props.pauseSegment}
                 onFinish={props.finishSegment}

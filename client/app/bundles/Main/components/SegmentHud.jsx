@@ -16,8 +16,7 @@ class SegmentHud extends React.Component {
     }
 
     play() {
-        console.log('[debug] play');
-        this.state.onPlay('');
+        this.state.onPlay(this.state.title);
     }
 
     pause() {
