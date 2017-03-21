@@ -14,6 +14,7 @@ function Main(props) {
             <SegmentPanel
                 segments={props.segments}
                 addSegment={props.addSegment}
+                updateSegmentTitle={props.updateSegmentTitle}
                 pauseSegment={props.pauseSegment}
                 finishSegment={props.finishSegment}
                 removeSegment={props.removeSegment}
@@ -32,6 +33,7 @@ Main.propTypes = {
     //segments
     segments: PropTypes.array.isRequired,
     addSegment: PropTypes.func.isRequired,
+    updateSegmentTitle: PropTypes.func.isRequired,
     pauseSegment: PropTypes.func.isRequired,
     finishSegment: PropTypes.func.isRequired,
     removeSegment: PropTypes.func.isRequired

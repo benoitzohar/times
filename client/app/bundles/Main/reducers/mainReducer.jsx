@@ -46,7 +46,18 @@ const segments = (state = [], action) => {
             return [...state];
 
         default:
-            return state;
+            return [
+                {
+                    id: 'tmp-segment-' + uniqueId(),
+                    title: 'Test segment 1',
+                    startdate: new Date()
+                },
+                {
+                    id: 'tmp-segment-' + uniqueId(),
+                    title: 'Test segment 2',
+                    startdate: new Date()
+                }
+            ];
     }
 };
 

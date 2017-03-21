@@ -7,11 +7,13 @@ function SegmentPanel(props) {
     const lastSegment = last(props.segments);
     const mainSegment = lastSegment && lastSegment.duration
         ? null
-        : last(props.segments);
+        : lastSegment;
+    console.log('[debug] mainSegment', mainSegment);
     return (
         <div className="segment-panel">
             <SegmentHud
                 segment={mainSegment}
+                setTitle={updateSegmentTitle}
                 onPlay={props.addSegment}
                 onPause={props.pauseSegment}
                 onFinish={props.finishSegment}
@@ -27,6 +29,7 @@ function SegmentPanel(props) {
 SegmentPanel.propTypes = {
     segments: PropTypes.array.isRequired,
     addSegment: PropTypes.func.isRequired,
+    updateSegmentTitle: PropTypes.func.isRequired,
     pauseSegment: PropTypes.func.isRequired,
     finishSegment: PropTypes.func.isRequired,
     removeSegment: PropTypes.func.isRequired
