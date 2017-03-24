@@ -18,7 +18,6 @@ class SegmentHud extends React.Component {
 
     init(props) {
         this.segment = props.segment ? props.segment : {};
-        console.log('[debug] this.segment', this.segment);
     }
 
     getDuration() {
@@ -55,7 +54,6 @@ class SegmentHud extends React.Component {
 
     setTitle(event) {
         const title = event.target.value;
-        console.log('[debug] this.segment.id', this.segment.id);
         if (this.segment.id) {
             this.props.updateSegment(this.segment.id, { title });
         } else {
