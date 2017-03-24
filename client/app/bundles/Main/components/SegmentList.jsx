@@ -19,7 +19,7 @@ function SegmentList(props) {
 
 SegmentList.propTypes = {
     segments: PropTypes.array.isRequired,
-    updateTaskTitle: PropTypes.func.isRequired,
+    updateSegmentTitle: PropTypes.func.isRequired,
     removeSegment: PropTypes.func.isRequired
 };
 
