@@ -42,18 +42,20 @@ const segments = (state = [], action) => {
         case 'SEGMENT_ADD':
             return [
                 ...state,
-                {
-                    id: 'tmp-segment-' + uniqueId(),
-                    title: action.title,
-                    startdate: new Date()
-                }
+                assign(
+                    {
+                        id: 'tmp-segment-' + uniqueId(),
+                        startdate: new Date()
+                    },
+                    segment
+                )
             ];
 
-        case 'SEGMENT_UPDATE_TITLE':
+        case 'SEGMENT_UPDATE':
             return state.map(
                 segment =>
                     segment.id === action.id
-                        ? assign({}, segment, { title: action.title })
+                        ? assign({}, segment, action.segment)
                         : segment
             );
 
@@ -66,7 +68,8 @@ const segments = (state = [], action) => {
                 {
                     id: 'tmp-segment-' + uniqueId(),
                     title: 'Test segment 1',
-                    startdate: new Date()
+                    startdate: new Date(),
+                    duration: 12000
                 },
                 {
                     id: 'tmp-segment-' + uniqueId(),

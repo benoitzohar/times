@@ -2,24 +2,32 @@ import React, { PropTypes } from 'react';
 import Segment from './Segment';
 
 function SegmentList(props) {
+    //only show visible segments
+    const segments = props.segments.map(
+        segment => segment.duration ? segment : null
+    );
+
     return (
         <div className="segment-list">
-            {props.segments.map(segment => (
-                <Segment
-                    key={segment.id}
-                    title={segment.title}
-                    onTitleChange={title =>
-                        props.updateSegmentTitle(segment.id, title)}
-                    onDelete={() => props.deleteSegment(segment.id)}
-                />
-            ))}
+            {segments.map(
+                segment =>
+                    segment
+                        ? <Segment
+                              key={segment.id}
+                              title={segment.title}
+                              onTitleChange={title =>
+                                  props.updateSegment(segment.id, { title })}
+                              onDelete={() => props.deleteSegment(segment.id)}
+                          />
+                        : null
+            )}
         </div>
     );
 }
 
 SegmentList.propTypes = {
     segments: PropTypes.array.isRequired,
-    updateSegmentTitle: PropTypes.func.isRequired,
+    updateSegment: PropTypes.func.isRequired,
     removeSegment: PropTypes.func.isRequired
 };
 

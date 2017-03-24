@@ -7,12 +7,10 @@ export const updateTaskTitle = (id, title) => ({
 });
 export const removeTask = id => ({ type: 'TASK_REMOVE', id });
 
-export const addSegment = title => ({ type: 'SEGMENT_ADD', title });
-export const updateSegmentTitle = (id, title) => ({
-    type: 'SEGMENT_UPDATE_TITLE',
+export const addSegment = segment => ({ type: 'SEGMENT_ADD', segment });
+export const updateSegment = (id, segment) => ({
+    type: 'SEGMENT_UPDATE',
     id,
-    title
+    segment
 });
-export const pauseSegment = id => ({ type: 'SEGMENT_PAUSE', id });
-export const finishSegment = id => ({ type: 'SEGMENT_FINISH', id });
 export const removeSegment = id => ({ type: 'SEGMENT_REMOVE', id });

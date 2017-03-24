@@ -5,8 +5,12 @@ class SegmentHud extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = Object.assign({}, props);
-        this.state.title = this.state.segment ? this.state.segment.title : '';
+        this.state = {
+            id: props.segment ? props.segment.id : null,
+            segment: props.segment ? props.segment.title : '',
+            addSegment: props.addSegment,
+            updateSegment: props.updateSegment
+        };
 
         this.play = this.play.bind(this);
         this.pause = this.pause.bind(this);
@@ -15,7 +19,7 @@ class SegmentHud extends React.Component {
     }
 
     play() {
-        this.state.onPlay(this.state.title);
+        console.log('[debug] play');
     }
 
     pause() {
@@ -24,15 +28,15 @@ class SegmentHud extends React.Component {
 
     finish() {
         console.log('[debug] finish');
-        this.state.onFinish();
     }
 
     setTitle(event) {
-        this.setState({ title: event.target.value });
-
-        _.debounce(() => {
-            this.state.updateSegmentTitle(this.state.title);
-        });
+        const title = event.target.value;
+        if (this.state.id) {
+            this.state.updateSegment(this.state.id, { title });
+        } else {
+            this.state.addSegment({ title });
+        }
     }
 
     render() {
@@ -56,9 +60,8 @@ class SegmentHud extends React.Component {
 
 SegmentHud.propTypes = {
     segment: PropTypes.object,
-    updateSegmentTitle: PropTypes.func.isRequired,
-    onPlay: PropTypes.func.isRequired,
-    onFinish: PropTypes.func.isRequired
+    addSegment: PropTypes.func.isRequired,
+    updateSegment: PropTypes.func.isRequired
 };
 
 export default SegmentHud;
