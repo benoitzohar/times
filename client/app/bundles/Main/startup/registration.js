@@ -1,5 +1,4 @@
 import ReactOnRails from 'react-on-rails';
-
 import MainApp from './MainApp';
 
 // This is how react_on_rails can see the Main App in the browser.

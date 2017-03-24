@@ -17,7 +17,7 @@ function SegmentList(props) {
                               title={segment.title}
                               onTitleChange={title =>
                                   props.updateSegment(segment.id, { title })}
-                              onDelete={() => props.deleteSegment(segment.id)}
+                              onDelete={() => props.removeSegment(segment.id)}
                           />
                         : null
             )}
