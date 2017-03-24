@@ -5,9 +5,7 @@ import SegmentList from './SegmentList';
 
 function SegmentPanel(props) {
     const lastSegment = last(props.segments);
-    const mainSegment = lastSegment && lastSegment.duration
-        ? null
-        : lastSegment;
+    const mainSegment = lastSegment && lastSegment.enddate ? null : lastSegment;
 
     return (
         <div className="segment-panel">

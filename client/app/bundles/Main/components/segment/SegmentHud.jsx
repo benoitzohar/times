@@ -5,38 +5,60 @@ class SegmentHud extends React.Component {
     constructor(props) {
         super(props);
 
-        console.log('[debug] props.segment', props.segment);
+        //scope binding
+        ['init', 'play', 'pause', 'finish', 'setTitle'].map(fn => {
+            this[fn] = this[fn].bind(this);
+        });
+        this.init(props);
+    }
 
-        this.state = {
-            segment: props.segment ? props.segment : {},
-            addSegment: props.addSegment,
-            updateSegment: props.updateSegment
-        };
+    componentDidUpdate(nextProps) {
+        this.init(nextProps);
+    }
 
-        this.play = this.play.bind(this);
-        this.pause = this.pause.bind(this);
-        this.finish = this.finish.bind(this);
-        this.setTitle = this.setTitle.bind(this);
+    init(props) {
+        this.segment = props.segment ? props.segment : {};
+    }
+
+    getDuration() {
+        const currentDuration = this.segment && this.segment.duration
+            ? this.segment.duration
+            : 0;
+        const newDuration = new Date() - this.segment.startdate;
+        return currentDuration + newDuration;
     }
 
     play() {
         console.log('[debug] play');
+        if (this.segment.id) {
+            this.props.updateSegment(this.segment.id, {
+                startdate: new Date()
+            });
+        } else {
+            this.props.addSegment({ startdate: new Date() });
+        }
     }
 
     pause() {
-        console.log('[debug] pause');
+        this.props.updateSegment(this.segment.id, {
+            duration: this.getDuration(),
+            startdate: null
+        });
     }
 
     finish() {
-        console.log('[debug] finish');
+        this.props.updateSegment(this.segment.id, {
+            duration: this.getDuration(),
+            enddate: new Date()
+        });
     }
 
     setTitle(event) {
         const title = event.target.value;
-        if (this.state.segment.id) {
-            this.state.updateSegment(this.state.segment.id, { title });
+        if (this.segment.id) {
+            this.props.updateSegment(this.segment.id, { title });
         } else {
-            this.state.addSegment({ title });
+            this.props.addSegment({ title });
         }
     }
 
@@ -45,15 +67,18 @@ class SegmentHud extends React.Component {
             <div className="segment-hud">
                 <input
                     type="text"
-                    value={this.state.segment.title}
+                    value={this.props.segment ? this.props.segment.title : ''}
                     onChange={this.setTitle}
                 />
                 <div className="segment-hud__main-counter">
                     00:00
                 </div>
-                <button onClick={this.play}>Play</button>
-                <button onClick={this.pause}>Pause</button>
-                <button onClick={this.finish}>Finish</button>
+                {!this.segment.duration && !this.segment.startdate
+                    ? <button onClick={this.play}>Play</button>
+                    : <button onClick={this.pause}>Pause</button>}
+                {this.segment.startdate
+                    ? <button onClick={this.finish}>Finish</button>
+                    : null}
             </div>
         );
     }

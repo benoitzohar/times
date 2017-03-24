@@ -32,12 +32,15 @@ const reducer = (state = [], action) => {
                     id: 'tmp-segment-' + uniqueId(),
                     title: 'Test segment 1',
                     startdate: new Date(),
-                    duration: 12000
+                    duration: 12000,
+                    enddate: null
                 },
                 {
                     id: 'tmp-segment-' + uniqueId(),
                     title: 'Test segment 2',
-                    startdate: new Date()
+                    startdate: new Date(),
+                    duration: 0,
+                    enddate: null
                 }
             ];
     }
