@@ -12,12 +12,13 @@ class SegmentHud extends React.Component {
         this.init(props);
     }
 
-    componentDidUpdate(nextProps) {
+    componentWillUpdate(nextProps) {
         this.init(nextProps);
     }
 
     init(props) {
         this.segment = props.segment ? props.segment : {};
+        console.log('[debug] this.segment', this.segment);
     }
 
     getDuration() {
@@ -29,7 +30,6 @@ class SegmentHud extends React.Component {
     }
 
     play() {
-        console.log('[debug] play');
         if (this.segment.id) {
             this.props.updateSegment(this.segment.id, {
                 startdate: new Date()
@@ -55,6 +55,7 @@ class SegmentHud extends React.Component {
 
     setTitle(event) {
         const title = event.target.value;
+        console.log('[debug] this.segment.id', this.segment.id);
         if (this.segment.id) {
             this.props.updateSegment(this.segment.id, { title });
         } else {
@@ -73,10 +74,10 @@ class SegmentHud extends React.Component {
                 <div className="segment-hud__main-counter">
                     00:00
                 </div>
-                {!this.segment.duration && !this.segment.startdate
+                {!this.segment.startdate
                     ? <button onClick={this.play}>Play</button>
                     : <button onClick={this.pause}>Pause</button>}
-                {this.segment.startdate
+                {this.segment.startdate || this.segment.duration
                     ? <button onClick={this.finish}>Finish</button>
                     : null}
             </div>

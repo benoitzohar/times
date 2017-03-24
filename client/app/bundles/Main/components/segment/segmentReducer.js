@@ -8,9 +8,11 @@ const reducer = (state = [], action) => {
                 assign(
                     {
                         id: 'tmp-segment-' + uniqueId(),
-                        startdate: new Date()
+                        startdate: null,
+                        duration: 0,
+                        enddate: null
                     },
-                    segment
+                    action.segment
                 )
             ];
 
@@ -33,7 +35,7 @@ const reducer = (state = [], action) => {
                     title: 'Test segment 1',
                     startdate: new Date(),
                     duration: 12000,
-                    enddate: null
+                    enddate: new Date(new Date() + 12000)
                 },
                 {
                     id: 'tmp-segment-' + uniqueId(),
