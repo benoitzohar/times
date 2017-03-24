@@ -49,6 +49,14 @@ const segments = (state = [], action) => {
                 }
             ];
 
+        case 'SEGMENT_UPDATE_TITLE':
+            return state.map(
+                segment =>
+                    segment.id === action.id
+                        ? assign({}, segment, { title: action.title })
+                        : segment
+            );
+
         case 'SEGMENT_REMOVE':
             remove(state, { id: action.id });
             return [...state];

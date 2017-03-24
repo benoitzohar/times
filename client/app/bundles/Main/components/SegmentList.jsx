@@ -8,6 +8,8 @@ function SegmentList(props) {
                 <Segment
                     key={segment.id}
                     title={segment.title}
+                    onTitleChange={title =>
+                        props.updateSegmentTitle(segment.id, title)}
                     onDelete={() => props.deleteSegment(segment.id)}
                 />
             ))}
@@ -17,6 +19,7 @@ function SegmentList(props) {
 
 SegmentList.propTypes = {
     segments: PropTypes.array.isRequired,
+    updateTaskTitle: PropTypes.func.isRequired,
     removeSegment: PropTypes.func.isRequired
 };
 

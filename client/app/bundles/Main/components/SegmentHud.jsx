@@ -3,7 +3,6 @@ import debounce from 'lodash';
 
 class SegmentHud extends React.Component {
     constructor(props) {
-        console.log('[debug] props', props);
         super(props);
 
         this.state = Object.assign({}, props);
@@ -32,7 +31,7 @@ class SegmentHud extends React.Component {
         this.setState({ title: event.target.value });
 
         _.debounce(() => {
-            this.state.setTitle(this.state.title);
+            this.state.updateSegmentTitle(this.state.title);
         });
     }
 
@@ -57,7 +56,7 @@ class SegmentHud extends React.Component {
 
 SegmentHud.propTypes = {
     segment: PropTypes.object,
-    setTitle: PropTypes.func.isRequired,
+    updateSegmentTitle: PropTypes.func.isRequired,
     onPlay: PropTypes.func.isRequired,
     onFinish: PropTypes.func.isRequired
 };

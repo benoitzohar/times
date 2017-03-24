@@ -3,6 +3,8 @@ import TaskList from './TaskList';
 import SegmentPanel from './SegmentPanel';
 
 function Main(props) {
+    console.log('[debug] props', props);
+
     return (
         <div>
             <TaskList

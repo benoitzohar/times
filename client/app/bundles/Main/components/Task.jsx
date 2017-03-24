@@ -6,7 +6,7 @@ function Task(props) {
             <input
                 type="text"
                 value={props.title}
-                onChange={title => props.onTitleChange(title)}
+                onChange={evt => props.onTitleChange(evt.target.value)}
             />
             {props.current ? <span>[selected]</span> : null}
             <button onClick={props.onSelect}>Select</button>

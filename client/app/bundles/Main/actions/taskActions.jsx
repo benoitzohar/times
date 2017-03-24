@@ -8,8 +8,9 @@ export const updateTaskTitle = (id, title) => ({
 export const removeTask = id => ({ type: 'TASK_REMOVE', id });
 
 export const addSegment = title => ({ type: 'SEGMENT_ADD', title });
-export const updateSegmentTitle = title => ({
+export const updateSegmentTitle = (id, title) => ({
     type: 'SEGMENT_UPDATE_TITLE',
+    id,
     title
 });
 export const pauseSegment = id => ({ type: 'SEGMENT_PAUSE', id });
