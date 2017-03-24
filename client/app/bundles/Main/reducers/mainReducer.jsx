@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { uniqueId, remove } from 'lodash';
+import { uniqueId, remove, assign } from 'lodash';
 
 const code = (state = '', action) => {
     return state;
@@ -19,6 +19,14 @@ const tasks = (state = [], action) => {
                 ...state,
                 { id: 'tmp-task-' + uniqueId(), title: action.title }
             ];
+
+        case 'TASK_UPDATE_TITLE':
+            return state.map(
+                task =>
+                    task.id === action.id
+                        ? assign({}, task, { title: action.title })
+                        : task
+            );
 
         case 'TASK_REMOVE':
             remove(state, { id: action.id });

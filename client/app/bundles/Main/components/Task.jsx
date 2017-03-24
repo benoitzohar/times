@@ -3,7 +3,12 @@ import React, { PropTypes } from 'react';
 function Task(props) {
     return (
         <div className="task">
-            {props.title} {props.current ? <span>selected</span> : null}
+            <input
+                type="text"
+                value={props.title}
+                onChange={title => props.onTitleChange(title)}
+            />
+            {props.current ? <span>[selected]</span> : null}
             <button onClick={props.onSelect}>Select</button>
             <button onClick={props.onDelete}>Delete</button>
         </div>
@@ -13,6 +18,7 @@ function Task(props) {
 Task.propTypes = {
     title: PropTypes.string.isRequired,
     current: PropTypes.bool,
+    onTitleChange: PropTypes.func.isRequired,
     onSelect: PropTypes.func.isRequired,
     onDelete: PropTypes.func.isRequired
 };

@@ -9,6 +9,8 @@ function TaskList(props) {
                     key={task.id}
                     title={task.title}
                     current={task.current}
+                    onTitleChange={title =>
+                        props.updateTaskTitle(task.id, title)}
                     onSelect={() => props.selectTask(task.id)}
                     onDelete={() => props.removeTask(task.id)}
                 />

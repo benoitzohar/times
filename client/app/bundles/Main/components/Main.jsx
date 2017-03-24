@@ -8,6 +8,7 @@ function Main(props) {
             <TaskList
                 tasks={props.tasks}
                 addTask={props.addTask}
+                updateTaskTitle={props.updateTaskTitle}
                 selectTask={props.selectTask}
                 removeTask={props.removeTask}
             />
@@ -27,6 +28,7 @@ Main.propTypes = {
     //tasks
     tasks: PropTypes.array.isRequired,
     selectTask: PropTypes.func.isRequired,
+    updateTaskTitle: PropTypes.func.isRequired,
     addTask: PropTypes.func.isRequired,
     removeTask: PropTypes.func.isRequired,
 
