@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
-import { debounce, padStart, now } from 'lodash';
-import moment from 'moment';
+import { debounce, now } from 'lodash';
+import { millisecondDurationToHumanReadableString } from '../../helpers';
 
 class SegmentHud extends React.Component {
     constructor(props) {
@@ -96,11 +96,14 @@ class SegmentHud extends React.Component {
     }
 
     setTitle(event) {
-        const title = event.target.value;
+        this.segment.title = event.target.value;
+
         if (this.segment.id) {
-            this.props.updateSegment(this.segment.id, { title });
+            this.props.updateSegment(this.segment.id, {
+                title: this.segment.title
+            });
         } else {
-            this.props.addSegment({ title });
+            this.props.addSegment({ title: this.segment.title });
         }
     }
 
@@ -113,20 +116,7 @@ class SegmentHud extends React.Component {
             elapsedMs = this.segment.duration;
         }
 
-        const duration = moment.duration(elapsedMs);
-
-        const seconds = duration.seconds();
-        const minutes = duration.minutes();
-        const hours = duration.hours();
-        const days = duration.days();
-
-        let elapsed = [hours, minutes, seconds]
-            .map(time => padStart(time, 2, 0))
-            .join(':');
-
-        if (days > 0) {
-            elapsed = days + ' day' + (days > 1 ? 's' : '') + ' and ' + elapsed;
-        }
+        const elapsed = millisecondDurationToHumanReadableString(elapsedMs);
 
         this.setState({
             elapsed
@@ -138,7 +128,7 @@ class SegmentHud extends React.Component {
             <div className="segment-hud">
                 <input
                     type="text"
-                    value={this.props.segment ? this.props.segment.title : ''}
+                    value={this.segment.title}
                     onChange={this.setTitle}
                 />
                 <div className="segment-hud__main-counter">

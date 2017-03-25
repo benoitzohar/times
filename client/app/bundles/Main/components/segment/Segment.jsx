@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react';
+import { millisecondDurationToHumanReadableString } from '../../helpers';
 
 function Segment(props) {
+    const duration = millisecondDurationToHumanReadableString(props.duration);
     return (
         <div className="segment">
             <input
@@ -8,6 +10,7 @@ function Segment(props) {
                 value={props.title}
                 onChange={evt => props.onTitleChange(evt.target.value)}
             />
+            Duration: {duration}
             <button onClick={props.onDelete}>Delete</button>
         </div>
     );
@@ -15,6 +18,7 @@ function Segment(props) {
 
 Segment.propTypes = {
     title: PropTypes.string.isRequired,
+    duration: PropTypes.number.isRequired,
     onTitleChange: PropTypes.func.isRequired,
     onDelete: PropTypes.func.isRequired
 };
