@@ -9,6 +9,7 @@ function Main(props) {
                 tasks={props.tasks}
                 addTask={props.addTask}
                 updateTaskTitle={props.updateTaskTitle}
+                apiUpdateTask={props.apiUpdateTask}
                 selectTask={props.selectTask}
                 removeTask={props.removeTask}
             />
@@ -29,6 +30,7 @@ Main.propTypes = {
     tasks: PropTypes.array.isRequired,
     selectTask: PropTypes.func.isRequired,
     updateTaskTitle: PropTypes.func.isRequired,
+    apiUpdateTask: PropTypes.func.isRequired,
     addTask: PropTypes.func.isRequired,
     removeTask: PropTypes.func.isRequired,
 
