@@ -1,7 +1,18 @@
 import { uniqueId, remove, assign } from 'lodash';
 
-const reducer = (state = [], action) => {
-    console.log('[debug] state, action', state, action);
+import {
+    ADD_TASK,
+    ADD_TASK_SUCCESS,
+    ADD_TASK_FAILURE, //TODO handle failure
+    UPDATE_TASK,
+    UPDATE_TASK_SUCCESS,
+    UPDATE_TASK_FAILURE, //TODO handle failure
+    DELETE_TASK,
+    DELETE_TASK_SUCCESS,
+    DELETE_TASK_FAILURE //TODO handle failure
+} from './taskConstants';
+
+const tasks = (state = [], action) => {
     switch (action.type) {
         case 'TASK_SELECT':
             const tasks = [...state];
@@ -10,22 +21,31 @@ const reducer = (state = [], action) => {
             });
             return tasks;
 
-        case 'TASK_ADD':
+        case ADD_TASK:
             return [
                 ...state,
-                { id: 'tmp-task-' + uniqueId(), title: action.title }
+                assign({ id: action.meta.temporaryId }, action.meta.task)
             ];
+        case ADD_TASK_SUCCESS:
+            return state.map(task => {
+                //replace the item with temporary ID by the actual object
+                if (task.id == action.meta.temporaryId) {
+                    return action.payload;
+                } else {
+                    return task;
+                }
+            });
 
-        case 'TASK_UPDATE_TITLE':
+        case UPDATE_TASK:
             return state.map(
                 task =>
-                    task.id === action.id
-                        ? assign({}, task, { title: action.title })
+                    task.id === action.meta.task.id
+                        ? assign({}, task, action.meta.task)
                         : task
             );
 
-        case 'TASK_REMOVE':
-            remove(state, { id: action.id });
+        case DELETE_TASK:
+            remove(state, { id: action.meta.id });
             return [...state];
 
         default:
@@ -33,4 +53,4 @@ const reducer = (state = [], action) => {
     }
 };
 
-export default reducer;
+export default tasks;

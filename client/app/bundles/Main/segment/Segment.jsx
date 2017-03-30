@@ -1,17 +1,27 @@
 import React, { PropTypes } from 'react';
+import BEMHelper from 'react-bem-helper';
 import { millisecondDurationToHumanReadableString } from '../helpers';
 
 function Segment(props) {
     const duration = millisecondDurationToHumanReadableString(props.duration);
+
+    //configure the bem helper to get proper classe names
+    const classes = new BEMHelper({
+        name: 'segment'
+    });
+
     return (
-        <div className="segment">
+        <div {...classes()}>
             <input
+                {...classes('input')}
                 type="text"
                 value={props.title}
                 onChange={evt => props.onTitleChange(evt.target.value)}
             />
             Duration: {duration}
-            <button onClick={props.onDelete}>Delete</button>
+            <button {...classes('button')} onClick={props.onDelete}>
+                Delete
+            </button>
         </div>
     );
 }

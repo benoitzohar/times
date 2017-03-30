@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import BEMHelper from 'react-bem-helper';
 import { last } from 'lodash';
 import SegmentHud from './SegmentHud';
 import SegmentList from './SegmentList';
@@ -7,8 +8,13 @@ function SegmentPanel(props) {
     const lastSegment = last(props.segments);
     const mainSegment = lastSegment && lastSegment.enddate ? null : lastSegment;
 
+    //configure the bem helper to get proper classe names
+    const classes = new BEMHelper({
+        name: 'segmentPanel'
+    });
+
     return (
-        <div className="segment-panel">
+        <div {...classes()}>
             <SegmentHud
                 segment={mainSegment}
                 addSegment={props.addSegment}

@@ -1,4 +1,6 @@
 import React, { PropTypes } from 'react';
+import BEMHelper from 'react-bem-helper';
+
 import Segment from './Segment';
 
 function SegmentList(props) {
@@ -7,8 +9,13 @@ function SegmentList(props) {
         segment => segment.enddate ? segment : null
     );
 
+    //configure the bem helper to get proper classe names
+    const classes = new BEMHelper({
+        name: 'segmentList'
+    });
+
     return (
-        <div className="segment-list">
+        <div {...classes()}>
             {segments.map(
                 segment =>
                     segment

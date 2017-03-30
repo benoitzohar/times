@@ -1,10 +1,16 @@
 import React, { PropTypes } from 'react';
+import BEMHelper from 'react-bem-helper';
 import { debounce, now } from 'lodash';
 import { millisecondDurationToHumanReadableString } from '../helpers';
 
 class SegmentHud extends React.Component {
     constructor(props) {
         super(props);
+
+        //configure the bem helper to get proper classe names
+        this.classes = new BEMHelper({
+            name: 'segmentHud'
+        });
 
         this.state = {
             elapsed: '00:00:00'
@@ -125,20 +131,36 @@ class SegmentHud extends React.Component {
 
     render() {
         return (
-            <div className="segment-hud">
+            <div {...this.classes()}>
                 <input
+                    {...this.classes('input')}
                     type="text"
                     value={this.segment.title}
                     onChange={this.setTitle}
                 />
-                <div className="segment-hud__main-counter">
+                <div {...this.classes('mainCounter')}>
                     {this.state.elapsed}
                 </div>
                 {!this.segment.startdate
-                    ? <button onClick={this.play}>Play</button>
-                    : <button onClick={this.pause}>Pause</button>}
+                    ? <button
+                          {...this.classes('button', 'play')}
+                          onClick={this.play}
+                      >
+                          Play
+                      </button>
+                    : <button
+                          {...this.classes('button', 'pause')}
+                          onClick={this.pause}
+                      >
+                          Pause
+                      </button>}
                 {this.segment.startdate || this.segment.duration
-                    ? <button onClick={this.finish}>Finish</button>
+                    ? <button
+                          {...this.classes('button', 'finish')}
+                          onClick={this.finish}
+                      >
+                          Finish
+                      </button>
                     : null}
             </div>
         );

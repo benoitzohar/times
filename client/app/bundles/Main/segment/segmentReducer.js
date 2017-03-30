@@ -1,6 +1,7 @@
 import { uniqueId, remove, assign } from 'lodash';
 
-const reducer = (state = [], action) => {
+const segments = (state = [], action) => {
+    console.log('[debug] segments action', action);
     switch (action.type) {
         case 'SEGMENT_ADD':
             return [
@@ -48,4 +49,4 @@ const reducer = (state = [], action) => {
     }
 };
 
-export default reducer;
+export default segments;

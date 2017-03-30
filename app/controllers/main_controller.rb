@@ -1,8 +1,13 @@
 class MainController < ApplicationController
   def index
+    currentTask = Task.where({code: params[:code], id: 1}) #TODO change id to current
     @main_props = {
-        code: params[:code],
-        tasks: Task.where({code: params[:code]})
+        params: {
+            code: params[:code],
+            currentTask: currentTask
+        },
+        tasks: Task.where({code: params[:code]}),
+        segments: Segment.where({task: currentTask})
     }
   end
 
