@@ -1,7 +1,17 @@
 import { uniqueId, remove, assign } from 'lodash';
+import {
+    ADD_TASK,
+    ADD_TASK_SUCCESS,
+    ADD_TASK_FAILURE,
+    UPDATE_TASK,
+    UPDATE_TASK_SUCCESS,
+    UPDATE_TASK_FAILURE,
+    DELETE_TASK,
+    DELETE_TASK_SUCCESS,
+    DELETE_TASK_FAILURE
+} from './apiTasksConstants';
 
 const reducer = (state = [], action) => {
-    console.log('[debug] state, action', state, action);
     switch (action.type) {
         case 'TASK_SELECT':
             const tasks = [...state];

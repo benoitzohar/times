@@ -3,15 +3,19 @@ import TaskList from './task/TaskList';
 import SegmentPanel from './segment/SegmentPanel';
 
 function Main(props) {
+    console.log('[debug] props', props);
     return (
         <div>
             <TaskList
+                code={props.code}
                 tasks={props.tasks}
                 addTask={props.addTask}
                 updateTaskTitle={props.updateTaskTitle}
-                apiUpdateTask={props.apiUpdateTask}
                 selectTask={props.selectTask}
                 removeTask={props.removeTask}
+                apiAddTask={props.apiAddTask}
+                apiUpdateTask={props.apiUpdateTask}
+                apiDeleteTask={props.apiDeleteTask}
             />
             <SegmentPanel
                 segments={props.segments}
@@ -26,13 +30,20 @@ function Main(props) {
 }
 
 Main.propTypes = {
+    //main
+    code: PropTypes.string.isRequired,
+
     //tasks
     tasks: PropTypes.array.isRequired,
     selectTask: PropTypes.func.isRequired,
     updateTaskTitle: PropTypes.func.isRequired,
-    apiUpdateTask: PropTypes.func.isRequired,
     addTask: PropTypes.func.isRequired,
     removeTask: PropTypes.func.isRequired,
+
+    //api task
+    apiAddTask: PropTypes.func.isRequired,
+    apiUpdateTask: PropTypes.func.isRequired,
+    apiDeleteTask: PropTypes.func.isRequired,
 
     //segments
     segments: PropTypes.array.isRequired,
