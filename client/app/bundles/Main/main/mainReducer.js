@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import tasks from '../components/task/taskReducer';
-import segments from '../components/segment/segmentReducer';
+import tasks from '../task/taskReducer';
+import segments from '../segment/segmentReducer';
 
 const code = (state = '', action) => {
     return state;

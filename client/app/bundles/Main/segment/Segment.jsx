@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { millisecondDurationToHumanReadableString } from '../../helpers';
+import { millisecondDurationToHumanReadableString } from '../helpers';
 
 function Segment(props) {
     const duration = millisecondDurationToHumanReadableString(props.duration);

@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { debounce, now } from 'lodash';
-import { millisecondDurationToHumanReadableString } from '../../helpers';
+import { millisecondDurationToHumanReadableString } from '../helpers';
 
 class SegmentHud extends React.Component {
     constructor(props) {

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Main from '../components/Main';
+import Main from './Main';
 import actions from './mainActions';
 
 // Which part of the Redux global state does our component want to receive as props?

@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
-import TaskList from './task/TaskList';
-import SegmentPanel from './segment/SegmentPanel';
+import TaskList from '../task/TaskList';
+import SegmentPanel from '../segment/SegmentPanel';
 
 function Main(props) {
     console.log('[debug] props', props);

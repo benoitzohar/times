@@ -1,5 +1,5 @@
-import * as taskActions from '../components/task/taskActions';
-import * as segmentActions from '../components/segment/segmentActions';
+import * as taskActions from '../task/taskActions';
+import * as segmentActions from '../segment/segmentActions';
 import * as apiTaskActions from '../middleware/apiTasksActions';
 
 let actions = {};
