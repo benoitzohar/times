@@ -7,7 +7,7 @@ const params = (state = {}, action) => {
     console.log('[debug] action', action, 'state', state);
     switch (action.type) {
         case SELECT_TASK:
-            return assign(state, { currentTask: action.meta.task });
+            return assign({}, state, { currentTask: action.meta.task });
         default:
             return state;
     }

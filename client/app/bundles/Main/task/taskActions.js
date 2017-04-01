@@ -1,5 +1,5 @@
 import { CALL_API } from 'redux-api-middleware';
-import { uniqueId, assign } from 'lodash';
+import { uniqueId } from 'lodash';
 import {
     ADD_TASK,
     ADD_TASK_SUCCESS,
