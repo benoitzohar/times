@@ -13,7 +13,7 @@ RSpec.describe 'Tasks API', type: :request do
     it 'returns tasks' do
       # Note `json` is a custom helper to parse JSON responses
       expect(json).not_to be_empty
-      expect(json.size).to eq(10) 
+      expect(json.size).to eq(10)
     end
 
     it 'returns status code 200' do
@@ -103,6 +103,30 @@ RSpec.describe 'Tasks API', type: :request do
 
     it 'returns status code 204' do
       expect(response).to have_http_status(204)
+    end
+  end
+
+  # Test suite for POST /current-task/:task-id
+  describe 'POST /current-task/:id' do
+    before { post "/current-task/#{task_id}", params:nil, headers:{'Authorization' => tasks.first.code} }
+
+    it 'returns current task' do
+      # Note `json` is a custom helper to parse JSON responses
+      expect(json).not_to be_empty
+      expect(json['title']).to eq(tasks.first.title)
+    end
+
+    it 'returns status code 200' do
+      expect(response).to have_http_status(200)
+    end
+  end
+
+  # Test suite for GET /current-task
+  describe 'GET /current-task' do
+    before { get "/current-task", params:nil, headers:{'Authorization' => tasks.first.code} }
+
+    it 'returns status code 200' do
+      expect(response).to have_http_status(200)
     end
   end
 end

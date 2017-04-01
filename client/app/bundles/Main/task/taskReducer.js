@@ -14,13 +14,6 @@ import {
 
 const tasks = (state = [], action) => {
     switch (action.type) {
-        case 'TASK_SELECT':
-            const tasks = [...state];
-            tasks.map(task => {
-                task.current = task.id === action.id;
-            });
-            return tasks;
-
         case ADD_TASK:
             return [
                 ...state,

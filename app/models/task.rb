@@ -1,6 +1,7 @@
 class Task < ApplicationRecord
     # model association
     has_many :segments, dependent: :destroy
+    has_many :current_tasks, dependent: :destroy
 
     # validations
     validates_presence_of :title
@@ -16,9 +17,4 @@ class Task < ApplicationRecord
        update_column(:duration, duration)
    end
 
-   def assign_current
-       other_task = Task.find_by({current: true})
-       other_task.update_column(:current, false)
-       update_column(:current, true)
-   end
 end

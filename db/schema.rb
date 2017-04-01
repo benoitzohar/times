@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170401034619) do
+ActiveRecord::Schema.define(version: 20170401050348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "current_tasks", force: :cascade do |t|
+    t.string   "code"
+    t.integer  "task_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_current_tasks_on_task_id", using: :btree
+  end
 
   create_table "segments", force: :cascade do |t|
     t.integer  "task_id"
@@ -31,8 +39,8 @@ ActiveRecord::Schema.define(version: 20170401034619) do
     t.bigint   "duration"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean  "current"
   end
 
+  add_foreign_key "current_tasks", "tasks"
   add_foreign_key "segments", "tasks"
 end
