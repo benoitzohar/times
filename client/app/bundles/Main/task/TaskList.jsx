@@ -19,7 +19,7 @@ function TaskList(props) {
                     onTitleChange={title =>
                         props.updateTask(assign(task, { title }))}
                     onSelect={() => {
-                        props.selectTask(task.id);
+                        props.updateTask(assign(task, { current: true }));
                     }}
                     onDelete={() => props.deleteTask(task.id)}
                 />
@@ -35,7 +35,6 @@ function TaskList(props) {
 }
 TaskList.propTypes = {
     tasks: PropTypes.array.isRequired,
-    selectTask: PropTypes.func.isRequired,
 
     addTask: PropTypes.func.isRequired,
     updateTask: PropTypes.func.isRequired,

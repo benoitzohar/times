@@ -21,8 +21,6 @@ const headers = function(state) {
     };
 };
 
-export const selectTask = id => ({ type: 'TASK_SELECT', id });
-
 export const addTask = task => {
     //generate temporary ID for the task
     const temporaryId = 'tmp-task-' + uniqueId();
