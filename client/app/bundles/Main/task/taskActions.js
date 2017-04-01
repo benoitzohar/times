@@ -14,6 +14,7 @@ import {
 
 //get the header object with the code from the state
 const headers = function(state) {
+    console.log('[debug] state', state);
     return {
         'Content-Type': 'application/json',
         Authorization: state.params.code
