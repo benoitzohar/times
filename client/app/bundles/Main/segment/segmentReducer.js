@@ -1,7 +1,6 @@
 import { uniqueId, remove, assign } from 'lodash';
 
 const segments = (state = [], action) => {
-    console.log('[debug] segments action', action);
     switch (action.type) {
         case 'SEGMENT_ADD':
             return [

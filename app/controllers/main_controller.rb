@@ -1,4 +1,5 @@
 class MainController < ApplicationController
+    skip_before_action :verify_authenticity_token
   def index
     current_task(params[:code])
 
@@ -45,10 +46,11 @@ class MainController < ApplicationController
   def set_current_task
       code = get_code(request)
       current_task(code)
+      task = Task.find_by({id: params[:id]})
       if @current_task
-          @current_task.update({ task: params[:id] })
+          @current_task.update({ task: task })
       else
-          @current_task = CurrentTask.create!({ code: code, task: Task.find_by({id: params[:id]}) })
+          @current_task = CurrentTask.create!({ code: code, task: task })
       end
       json_response(@current_task.task)
   end

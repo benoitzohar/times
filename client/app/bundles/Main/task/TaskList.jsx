@@ -9,18 +9,18 @@ function TaskList(props) {
         name: 'taskList'
     });
 
+    console.log('[debug] props', props);
+
     return (
         <div {...classes()}>
             {props.tasks.map(task => (
                 <Task
                     key={task.id}
                     title={task.title}
-                    current={task.current}
+                    current={task.id === props.params.currentTask.id}
                     onTitleChange={title =>
                         props.updateTask(assign(task, { title }))}
-                    onSelect={() => {
-                        props.updateTask(assign(task, { current: true }));
-                    }}
+                    onSelect={() => props.selectTask(task)}
                     onDelete={() => props.deleteTask(task.id)}
                 />
             ))}
@@ -34,11 +34,13 @@ function TaskList(props) {
     );
 }
 TaskList.propTypes = {
+    params: PropTypes.object.isRequired,
     tasks: PropTypes.array.isRequired,
 
     addTask: PropTypes.func.isRequired,
     updateTask: PropTypes.func.isRequired,
-    deleteTask: PropTypes.func.isRequired
+    deleteTask: PropTypes.func.isRequired,
+    selectTask: PropTypes.func.isRequired
 };
 
 export default TaskList;

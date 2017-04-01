@@ -9,12 +9,14 @@ import {
     UPDATE_TASK_FAILURE,
     DELETE_TASK,
     DELETE_TASK_SUCCESS,
-    DELETE_TASK_FAILURE
+    DELETE_TASK_FAILURE,
+    SELECT_TASK,
+    SELECT_TASK_SUCCESS,
+    SELECT_TASK_FAILURE
 } from './taskConstants';
 
 //get the header object with the code from the state
 const headers = function(state) {
-    console.log('[debug] state', state);
     return {
         'Content-Type': 'application/json',
         Authorization: state.params.code
@@ -74,6 +76,22 @@ export const deleteTask = id => ({
         ],
         endpoint: `/tasks/${id}`,
         method: 'DELETE',
+        headers
+    }
+});
+
+export const selectTask = task => ({
+    [CALL_API]: {
+        types: [
+            {
+                type: SELECT_TASK,
+                meta: { task }
+            },
+            SELECT_TASK_SUCCESS,
+            SELECT_TASK_FAILURE
+        ],
+        endpoint: `/current-task/${task.id}`,
+        method: 'POST',
         headers
     }
 });
