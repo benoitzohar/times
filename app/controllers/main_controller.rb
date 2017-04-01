@@ -1,6 +1,6 @@
 class MainController < ApplicationController
   def index
-    currentTask = Task.find_by!({code: params[:code], current: true}) #TODO change id to current
+    currentTask = Task.find_by!({code: params[:code], current: true})
     @main_props = {
         params: {
             code: params[:code],

@@ -15,4 +15,10 @@ class Task < ApplicationRecord
        duration = self.segments.sum(:duration)
        update_column(:duration, duration)
    end
+
+   def assign_current
+       other_task = Task.find_by({current: true})
+       other_task.update_column(:current, false)
+       update_column(:current, true)
+   end
 end

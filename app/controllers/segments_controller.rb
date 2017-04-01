@@ -16,6 +16,7 @@ class SegmentsController < ApplicationController
   # POST /tasks/:task_id/segments
   def create
     @segment = @task.segments.create!(segment_params)
+    @task.assign_current
     @task.update_duration
     json_response(@segment, :created)
   end
