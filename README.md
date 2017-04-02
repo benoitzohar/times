@@ -21,7 +21,7 @@ You can use the demo tool or install it yourself on heroku, it's ready for produ
     2.4
 
 * **Configuration:**  
-    `rake db`
+    `rake db`  
     `rake db:migrate`
 
 * **Develop:**  
