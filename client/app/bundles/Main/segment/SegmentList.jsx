@@ -24,8 +24,10 @@ function SegmentList(props) {
                               title={segment.title}
                               duration={segment.duration}
                               onTitleChange={title =>
-                                  props.updateSegment(segment.id, { title })}
-                              onDelete={() => props.removeSegment(segment.id)}
+                                  props.updateSegment(
+                                      assign(segment, { title })
+                                  )}
+                              onDelete={() => props.deleteSegment(segment.id)}
                           />
                         : null
             )}
@@ -36,7 +38,7 @@ function SegmentList(props) {
 SegmentList.propTypes = {
     segments: PropTypes.array.isRequired,
     updateSegment: PropTypes.func.isRequired,
-    removeSegment: PropTypes.func.isRequired
+    deleteSegment: PropTypes.func.isRequired
 };
 
 export default SegmentList;

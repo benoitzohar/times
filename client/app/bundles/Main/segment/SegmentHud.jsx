@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import BEMHelper from 'react-bem-helper';
-import { debounce, now } from 'lodash';
+import { debounce, now, assign } from 'lodash';
 import { millisecondDurationToHumanReadableString } from '../helpers';
 
 class SegmentHud extends React.Component {
@@ -79,35 +79,43 @@ class SegmentHud extends React.Component {
 
     play() {
         if (this.segment.id) {
-            this.props.updateSegment(this.segment.id, {
-                startdate: now()
-            });
+            this.props.updateSegment(
+                assign(this.segment, {
+                    startdate: now()
+                })
+            );
         } else {
             this.props.addSegment({ startdate: now() });
         }
     }
 
     pause() {
-        this.props.updateSegment(this.segment.id, {
-            duration: this.getDuration(),
-            startdate: null
-        });
+        this.props.updateSegment(
+            assign(this.segment, {
+                duration: this.getDuration(),
+                startdate: null
+            })
+        );
     }
 
     finish() {
-        this.props.updateSegment(this.segment.id, {
-            duration: this.getDuration(),
-            enddate: now()
-        });
+        this.props.updateSegment(
+            assign(this.segment, {
+                duration: this.getDuration(),
+                enddate: now()
+            })
+        );
     }
 
     setTitle(event) {
         this.segment.title = event.target.value;
 
         if (this.segment.id) {
-            this.props.updateSegment(this.segment.id, {
-                title: this.segment.title
-            });
+            this.props.updateSegment(
+                assign(this.segment, {
+                    title: this.segment.title
+                })
+            );
         } else {
             this.props.addSegment({ title: this.segment.title });
         }

@@ -1,50 +1,49 @@
 import { uniqueId, remove, assign } from 'lodash';
 
+import {
+    ADD_SEGMENT,
+    ADD_SEGMENT_SUCCESS,
+    ADD_SEGMENT_FAILURE, //TODO handle failure
+    UPDATE_SEGMENT,
+    UPDATE_SEGMENT_SUCCESS,
+    UPDATE_SEGMENT_FAILURE, //TODO handle failure
+    DELETE_SEGMENT,
+    DELETE_SEGMENT_SUCCESS,
+    DELETE_SEGMENT_FAILURE //TODO handle failure
+} from './segmentConstants';
+
 const segments = (state = [], action) => {
+    console.log('[debug] action', action);
     switch (action.type) {
-        case 'SEGMENT_ADD':
+        case ADD_SEGMENT:
             return [
                 ...state,
-                assign(
-                    {
-                        id: 'tmp-segment-' + uniqueId(),
-                        startdate: null,
-                        duration: 0,
-                        enddate: null
-                    },
-                    action.segment
-                )
+                assign({ id: action.meta.temporaryId }, action.meta.segment)
             ];
+        case ADD_SEGMENT_SUCCESS:
+            return state.map(segment => {
+                //replace the item with temporary ID by the actual object
+                if (segment.id == action.meta.temporaryId) {
+                    return action.payload;
+                } else {
+                    return segment;
+                }
+            });
 
-        case 'SEGMENT_UPDATE':
+        case UPDATE_SEGMENT:
             return state.map(
                 segment =>
-                    segment.id === action.id
-                        ? assign({}, segment, action.segment)
+                    segment.id === action.meta.segment.id
+                        ? assign({}, segment, action.meta.segment)
                         : segment
             );
 
-        case 'SEGMENT_REMOVE':
-            remove(state, { id: action.id });
+        case DELETE_SEGMENT:
+            remove(state, { id: action.meta.id });
             return [...state];
 
         default:
-            return [
-                {
-                    id: 'tmp-segment-' + uniqueId(),
-                    title: 'Test segment 1',
-                    startdate: new Date(),
-                    duration: 12000,
-                    enddate: new Date(new Date() + 12000)
-                },
-                {
-                    id: 'tmp-segment-' + uniqueId(),
-                    title: 'Test segment 2',
-                    startdate: new Date(new Date() - 1234000),
-                    duration: 0,
-                    enddate: null
-                }
-            ];
+            return state;
     }
 };
 

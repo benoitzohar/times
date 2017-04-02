@@ -23,7 +23,7 @@ function SegmentPanel(props) {
             <SegmentList
                 segments={props.segments}
                 updateSegment={props.updateSegment}
-                removeSegment={props.removeSegment}
+                deleteSegment={props.deleteSegment}
             />
         </div>
     );
@@ -33,7 +33,7 @@ SegmentPanel.propTypes = {
     segments: PropTypes.array.isRequired,
     addSegment: PropTypes.func.isRequired,
     updateSegment: PropTypes.func.isRequired,
-    removeSegment: PropTypes.func.isRequired
+    deleteSegment: PropTypes.func.isRequired
 };
 
 export default SegmentPanel;
