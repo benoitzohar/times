@@ -13,7 +13,6 @@ import {
 } from './segmentConstants';
 
 const segments = (state = [], action) => {
-    console.log('[debug] action', action);
     switch (action.type) {
         case ADD_SEGMENT:
             return [

@@ -9,8 +9,6 @@ function TaskList(props) {
         name: 'taskList'
     });
 
-    console.log('[debug] props', props);
-
     return (
         <div {...classes()}>
             {props.tasks.map(task => (
