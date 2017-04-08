@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { debounce, now, assign } from 'lodash';
 import { millisecondDurationToHumanReadableString } from '../helpers';
