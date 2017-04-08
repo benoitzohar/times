@@ -1,0 +1,21 @@
+.segment {
+
+    color: green;
+
+    &__input {
+
+    }
+
+    &__button {
+
+        @extend .btn;
+
+        &--select {
+
+        }
+        &--add {
+
+        }
+    }
+
+}

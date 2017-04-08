@@ -1,0 +1,22 @@
+//Define style for App
+
+.main {
+    position: absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    background-color: #f0f0f0;
+    background-image: url(/assets/bg-pattern.svg);
+
+    overflow:hidden;
+}
+
+//Import all dependencies
+@import "task/TaskList";
+@import "task/Task";
+
+@import "segment/SegmentPanel";
+@import "segment/SegmentHud";
+@import "segment/SegmentList";
+@import "segment/Segment";

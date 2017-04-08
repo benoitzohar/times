@@ -8,8 +8,10 @@ import SegmentPanelContainer from './segment/SegmentPanelContainer';
 const App = (props, _railsContext) => (
     <Provider store={configureStore(props)}>
         <div className="main">
-            <TaskListContainer />
-            <SegmentPanelContainer />
+            <div className="row around-s">
+                <TaskListContainer />
+                <SegmentPanelContainer />
+            </div>
         </div>
     </Provider>
 );
