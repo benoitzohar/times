@@ -1,6 +1,6 @@
 .taskList {
 
-    @extend .col-s-6;
+    @extend .col-s-3;
 
     color: red;
 
@@ -8,9 +8,6 @@
 
         @extend .btn;
 
-        &--select {
-
-        }
         &--add {
 
         }

@@ -1,15 +1,56 @@
 .task {
 
+    @extend .end-s;
+
+    width: 100%;
+    border: $border-size $border-type $default-color;
+    border-radius: $border-radius;
+    background-color: rgba($default-color, 0.2);
+    margin-bottom: 4px;
+    cursor: pointer;
+    padding: $padding;
+
+    &__input {
+        border: none;
+        cursor: text;
+        background-color: rgba($default-color, 0.2);
+        color: white;
+        padding: $padding;
+    }
+
+    &--selected {
+        background-color: $default-color;
+
+        &__input {
+
+            background-color: $default-color;
+            color: white;
+        }
+    }
+
+
 
     &__button {
 
         @extend .btn;
 
-        &--select {
+        &--delete {
+
+            border-color: $main-color;
+            color: $main-color;
+            opacity: 0;
+            transition: opacity 0.2s;
+
+            &:hover {
+                background-color: $main-color;
+            }
 
         }
-        &--add {
+    }
 
+    &:hover {
+        .task__button--delete {
+                opacity: 1;
         }
     }
 

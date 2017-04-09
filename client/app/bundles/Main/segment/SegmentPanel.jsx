@@ -16,6 +16,7 @@ function SegmentPanel(props) {
 
     return (
         <div {...classes()}>
+            <h1 {...classes('title')}>{props.params.currentTask.title}</h1>
             <SegmentHud
                 segment={mainSegment}
                 addSegment={props.addSegment}
@@ -31,6 +32,7 @@ function SegmentPanel(props) {
 }
 
 SegmentPanel.propTypes = {
+    params: PropTypes.object.isRequired,
     segments: PropTypes.array.isRequired,
     addSegment: PropTypes.func.isRequired,
     updateSegment: PropTypes.func.isRequired,
