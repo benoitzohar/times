@@ -9,10 +9,7 @@ import {
     UPDATE_SEGMENT_FAILURE,
     DELETE_SEGMENT,
     DELETE_SEGMENT_SUCCESS,
-    DELETE_SEGMENT_FAILURE,
-    SELECT_SEGMENT,
-    SELECT_SEGMENT_SUCCESS,
-    SELECT_SEGMENT_FAILURE
+    DELETE_SEGMENT_FAILURE
 } from './segmentConstants';
 
 //get the header object with the code from the state
@@ -40,7 +37,7 @@ export const addSegment = segment => {
                 },
                 ADD_SEGMENT_FAILURE
             ],
-            endpoint: state => `/tasks/${state.currentTask.id}/segments`,
+            endpoint: state => `/tasks/${state.params.currentTask.id}/segments`,
             method: 'POST',
             headers,
             body: JSON.stringify(segment)
@@ -58,7 +55,7 @@ export const updateSegment = segment => ({
             UPDATE_SEGMENT_FAILURE
         ],
         endpoint: state =>
-            `/tasks/${state.currentTask.id}/segments/${segment.id}`,
+            `/tasks/${state.params.currentTask.id}/segments/${segment.id}`,
         method: 'PUT',
         headers,
         body: JSON.stringify(segment)
@@ -75,7 +72,8 @@ export const deleteSegment = id => ({
             DELETE_SEGMENT_SUCCESS,
             DELETE_SEGMENT_FAILURE
         ],
-        endpoint: state => `/tasks/${state.currentTask.id}/segments/${id}`,
+        endpoint: state =>
+            `/tasks/${state.params.currentTask.id}/segments/${id}`,
         method: 'DELETE',
         headers
     }

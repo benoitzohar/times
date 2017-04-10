@@ -3,13 +3,13 @@ import { uniqueId, remove, assign } from 'lodash';
 import {
     ADD_TASK,
     ADD_TASK_SUCCESS,
-    ADD_TASK_FAILURE, //TODO handle failure
+    ADD_TASK_FAILURE,
     UPDATE_TASK,
     UPDATE_TASK_SUCCESS,
-    UPDATE_TASK_FAILURE, //TODO handle failure
+    UPDATE_TASK_FAILURE,
     DELETE_TASK,
     DELETE_TASK_SUCCESS,
-    DELETE_TASK_FAILURE //TODO handle failure
+    DELETE_TASK_FAILURE
 } from './taskConstants';
 
 const tasks = (state = [], action) => {

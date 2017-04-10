@@ -50,7 +50,7 @@ class SegmentHud extends React.Component {
 
     initSegment(props) {
         //save segment
-        this.segment = props.segment ? props.segment : {};
+        this.segment = props.segment ? props.segment : { title: '' };
     }
 
     initTick(componentHasBeenMounted) {
@@ -74,7 +74,9 @@ class SegmentHud extends React.Component {
         const currentDuration = this.segment && this.segment.duration
             ? this.segment.duration
             : 0;
-        const newDuration = now() - this.segment.startdate;
+        const newDuration = this.segment && this.segment.startdate
+            ? now() - this.segment.startdate
+            : 0;
         return currentDuration + newDuration;
     }
 
@@ -86,7 +88,10 @@ class SegmentHud extends React.Component {
                 })
             );
         } else {
-            this.props.addSegment({ startdate: now() });
+            this.props.addSegment({
+                startdate: now(),
+                title: this.segment.title
+            });
         }
     }
 
@@ -110,13 +115,9 @@ class SegmentHud extends React.Component {
 
     setTitle(event) {
         this.segment.title = event.target.value;
-
+        console.log('[debug] this.segment.id', this.segment.id);
         if (this.segment.id) {
-            this.props.updateSegment(
-                assign(this.segment, {
-                    title: this.segment.title
-                })
-            );
+            this.props.updateSegment(this.segment);
         } else {
             this.props.addSegment({ title: this.segment.title });
         }
@@ -124,9 +125,10 @@ class SegmentHud extends React.Component {
 
     tick() {
         let elapsedMs = 0;
+        console.log('[debug] this.segment', this.segment);
         if (this.segment.startdate) {
-            elapsedMs = this.segment.duration +
-                (now() - this.segment.startdate);
+            var duration = this.segment.duration || 0;
+            elapsedMs = duration + (now() - this.segment.startdate);
         } else if (this.segment.duration) {
             elapsedMs = this.segment.duration;
         }

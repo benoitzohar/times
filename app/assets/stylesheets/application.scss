@@ -13,15 +13,14 @@
  *= require_self
  */
 
+//SweetAlert2
+@import "../../../client/node_modules/sweetalert2/dist/sweetalert2.min";
 
 // Variables
 $colors: #FC585A #00B991;
 
-//Preload ProntoCSS variables (helps with Rails pre-compile)
-@import "../../../client/node_modules/prontocss/src/pronto/variables";
-
 // Load ProntoCSS Sass files
-@import "../../../client/node_modules/prontocss/src/pronto.scss";
+@import "../../../client/node_modules/prontocss/src/pronto";
 
 // Load main bundle styles
 @import "../../../client/app/bundles/Main/App";

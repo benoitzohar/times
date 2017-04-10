@@ -1,18 +1,20 @@
 import { uniqueId, remove, assign } from 'lodash';
+import { default as swal } from 'sweetalert2';
 
 import {
     ADD_SEGMENT,
     ADD_SEGMENT_SUCCESS,
-    ADD_SEGMENT_FAILURE, //TODO handle failure
+    ADD_SEGMENT_FAILURE,
     UPDATE_SEGMENT,
     UPDATE_SEGMENT_SUCCESS,
-    UPDATE_SEGMENT_FAILURE, //TODO handle failure
+    UPDATE_SEGMENT_FAILURE,
     DELETE_SEGMENT,
     DELETE_SEGMENT_SUCCESS,
-    DELETE_SEGMENT_FAILURE //TODO handle failure
+    DELETE_SEGMENT_FAILURE
 } from './segmentConstants';
 
 const segments = (state = [], action) => {
+    console.log('[debug] action.type', action.type);
     switch (action.type) {
         case ADD_SEGMENT:
             return [
@@ -40,6 +42,18 @@ const segments = (state = [], action) => {
         case DELETE_SEGMENT:
             remove(state, { id: action.meta.id });
             return [...state];
+
+        case ADD_SEGMENT_FAILURE:
+            swal(
+                'Error!',
+                'An error occured while creating the time, sorry.',
+                'error'
+            );
+            break;
+        case UPDATE_SEGMENT_FAILURE:
+            break;
+        case DELETE_SEGMENT_FAILURE:
+            break;
 
         default:
             return state;
