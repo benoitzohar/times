@@ -71,17 +71,6 @@ RSpec.describe 'Segments API' do
       end
     end
 
-    context 'when an invalid request' do
-      before { post "/tasks/#{task_id}/segments", params: {}, headers:{'Authorization' => task.code}   }
-
-      it 'returns status code 422' do
-        expect(response).to have_http_status(422)
-      end
-
-      it 'returns a failure message' do
-        expect(response.body).to match(/Validation failed: Title can't be blank/)
-      end
-    end
   end
 
   # Test suite for PUT /tasks/:task_id/segments/:id
