@@ -16,6 +16,7 @@ function TaskList(props) {
                 <Task
                     key={task.id}
                     title={task.title}
+                    duration={task.duration}
                     current={task.id === props.params.currentTask.id}
                     onTitleChange={title =>
                         props.updateTask(assign(task, { title }))}

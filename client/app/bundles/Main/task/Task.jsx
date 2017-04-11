@@ -2,8 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { default as swal } from 'sweetalert2';
+import { millisecondDurationToHumanReadableString } from '../helpers';
 
 function Task(props) {
+    const duration = millisecondDurationToHumanReadableString(props.duration);
+
     //configure the bem helper to get proper classe names
     const classes = new BEMHelper({
         name: 'task'
@@ -20,6 +23,7 @@ function Task(props) {
                 value={props.title}
                 onChange={evt => props.onTitleChange(evt.target.value)}
             />
+            <div {...classes('duration')}>{duration}</div>
             <button
                 {...classes('button', 'delete')}
                 className="btn icon icon-trash"
@@ -43,6 +47,7 @@ function Task(props) {
 
 Task.propTypes = {
     title: PropTypes.string.isRequired,
+    duration: PropTypes.number.isRequired,
     current: PropTypes.bool,
     onTitleChange: PropTypes.func.isRequired,
     onSelect: PropTypes.func.isRequired,
