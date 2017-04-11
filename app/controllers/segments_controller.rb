@@ -36,7 +36,7 @@ class SegmentsController < ApplicationController
   private
 
   def segment_params
-    params.permit(:title, :startdate, :duration)
+    params.permit(:title, :startdate, :enddate, :duration)
   end
 
   def set_task

@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { assign } from 'lodash';
 import BEMHelper from 'react-bem-helper';
 
 import Segment from './Segment';

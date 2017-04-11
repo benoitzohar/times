@@ -20,9 +20,10 @@ function Segment(props) {
                 onChange={evt => props.onTitleChange(evt.target.value)}
             />
             Duration: {duration}
-            <button {...classes('button')} onClick={props.onDelete}>
-                Delete
-            </button>
+            <button
+                {...classes('button', null, 'icon-trash')}
+                onClick={props.onDelete}
+            />
         </div>
     );
 }

@@ -22,6 +22,7 @@ function Task(props) {
             />
             <button
                 {...classes('button', 'delete')}
+                className="btn icon icon-trash"
                 onClick={evt => {
                     swal({
                         title: 'Are you sure?',
@@ -35,9 +36,7 @@ function Task(props) {
                         props.onDelete();
                     });
                 }}
-            >
-                Delete
-            </button>
+            />
         </div>
     );
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { debounce, now, assign } from 'lodash';
+import { debounce, assign } from 'lodash';
 import { millisecondDurationToHumanReadableString } from '../helpers';
 
 class SegmentHud extends React.Component {
@@ -75,7 +75,7 @@ class SegmentHud extends React.Component {
             ? this.segment.duration
             : 0;
         const newDuration = this.segment && this.segment.startdate
-            ? now() - this.segment.startdate
+            ? new Date() - this.segment.startdate
             : 0;
         return currentDuration + newDuration;
     }
@@ -84,12 +84,12 @@ class SegmentHud extends React.Component {
         if (this.segment.id) {
             this.props.updateSegment(
                 assign(this.segment, {
-                    startdate: now()
+                    startdate: new Date()
                 })
             );
         } else {
             this.props.addSegment({
-                startdate: now(),
+                startdate: new Date(),
                 title: this.segment.title
             });
         }
@@ -108,7 +108,7 @@ class SegmentHud extends React.Component {
         this.props.updateSegment(
             assign(this.segment, {
                 duration: this.getDuration(),
-                enddate: now()
+                enddate: new Date()
             })
         );
     }
@@ -128,7 +128,7 @@ class SegmentHud extends React.Component {
         console.log('[debug] this.segment', this.segment);
         if (this.segment.startdate) {
             var duration = this.segment.duration || 0;
-            elapsedMs = duration + (now() - this.segment.startdate);
+            elapsedMs = duration + (new Date() - this.segment.startdate);
         } else if (this.segment.duration) {
             elapsedMs = this.segment.duration;
         }
@@ -154,24 +154,18 @@ class SegmentHud extends React.Component {
                 </div>
                 {!this.segment.startdate
                     ? <button
-                          {...this.classes('button', 'play')}
+                          {...this.classes('button', 'play', 'icon-play')}
                           onClick={this.play}
-                      >
-                          Play
-                      </button>
+                      />
                     : <button
-                          {...this.classes('button', 'pause')}
+                          {...this.classes('button', 'pause', 'icon-pause')}
                           onClick={this.pause}
-                      >
-                          Pause
-                      </button>}
+                      />}
                 {this.segment.startdate || this.segment.duration
                     ? <button
-                          {...this.classes('button', 'finish')}
+                          {...this.classes('button', 'finish', 'icon-check')}
                           onClick={this.finish}
-                      >
-                          Finish
-                      </button>
+                      />
                     : null}
             </div>
         );
