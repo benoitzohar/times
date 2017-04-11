@@ -41,6 +41,28 @@ const tasks = (state = [], action) => {
             remove(state, { id: action.meta.id });
             return [...state];
 
+        case ADD_TASK_FAILURE:
+            swal(
+                'Error!',
+                'An error occured while creating the time, sorry.',
+                'error'
+            );
+            return state;
+        case UPDATE_TASK_FAILURE:
+            swal(
+                'Error!',
+                'An error occured while saving the time, sorry.',
+                'error'
+            );
+            return state;
+        case DELETE_TASK_FAILURE:
+            swal(
+                'Error!',
+                'An error occured while deleting the time, sorry.',
+                'error'
+            );
+            return state;
+
         default:
             return state;
     }

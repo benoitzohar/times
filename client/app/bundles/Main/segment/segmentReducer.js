@@ -49,11 +49,21 @@ const segments = (state = [], action) => {
                 'An error occured while creating the time, sorry.',
                 'error'
             );
-            break;
+            return state;
         case UPDATE_SEGMENT_FAILURE:
-            break;
+            swal(
+                'Error!',
+                'An error occured while saving the time, sorry.',
+                'error'
+            );
+            return state;
         case DELETE_SEGMENT_FAILURE:
-            break;
+            swal(
+                'Error!',
+                'An error occured while deleting the time, sorry.',
+                'error'
+            );
+            return state;
 
         default:
             return state;
