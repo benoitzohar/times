@@ -26,3 +26,9 @@ $colors: #FC585A #00B991;
 
 // Load main bundle styles
 @import "../../../client/app/bundles/Main/App";
+@import "../../../client/app/bundles/Main/task/TaskList";
+@import "../../../client/app/bundles/Main/task/Task";
+@import "../../../client/app/bundles/Main/segment/SegmentPanel";
+@import "../../../client/app/bundles/Main/segment/SegmentHud";
+@import "../../../client/app/bundles/Main/segment/SegmentList";
+@import "../../../client/app/bundles/Main/segment/Segment";
