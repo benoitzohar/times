@@ -29,8 +29,8 @@ function Segment(props) {
 }
 
 Segment.propTypes = {
-    title: PropTypes.string.isRequired,
-    duration: PropTypes.number.isRequired,
+    title: PropTypes.string,
+    duration: PropTypes.number,
     onTitleChange: PropTypes.func.isRequired,
     onDelete: PropTypes.func.isRequired
 };

@@ -1,5 +1,9 @@
 .segmentHud {
 
+    $subtle-color: rgba($default-color, 0.1);
+
+    background-color: $subtle-color;
+
     &__input {
 
     }
@@ -9,6 +13,21 @@
     }
 
     &__button {
+
+        font-size: 28px;
+        line-height: 36px;
+        height: 40px;
+        width: 40px;
+        border-radius: 40px;
+        border: 1px solid $default-color;
+        background: none;
+        color: $default-color;
+        outline: none;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $subtle-color;
+        }
 
         &--play {
 

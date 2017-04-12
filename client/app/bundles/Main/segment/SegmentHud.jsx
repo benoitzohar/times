@@ -115,7 +115,6 @@ class SegmentHud extends React.Component {
 
     setTitle(event) {
         this.segment.title = event.target.value;
-        console.log('[debug] this.segment.id', this.segment.id);
         if (this.segment.id) {
             this.props.updateSegment(this.segment);
         } else {
@@ -125,10 +124,10 @@ class SegmentHud extends React.Component {
 
     tick() {
         let elapsedMs = 0;
-        console.log('[debug] this.segment', this.segment);
         if (this.segment.startdate) {
-            var duration = this.segment.duration || 0;
-            elapsedMs = duration + (new Date() - this.segment.startdate);
+            const duration = this.segment.duration || 0;
+            elapsedMs = duration +
+                (new Date() - new Date(this.segment.startdate));
         } else if (this.segment.duration) {
             elapsedMs = this.segment.duration;
         }
