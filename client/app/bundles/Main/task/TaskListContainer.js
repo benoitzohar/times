@@ -1,9 +1,18 @@
-import { connect } from 'react-redux';
+import { connect, bindActionCreators } from 'react-redux';
+import { assign } from 'lodash';
 import TaskList from './TaskList';
-import * as actions from './taskActions';
+import * as taskActions from './taskActions';
+import { loadSegments, resetSegments } from '../segment/segmentActions';
 
 const mapStateToProps = state => {
     return { params: state.params, tasks: state.tasks };
 };
+console.log(
+    '[debug] assign(taskActions, { loadSegments })',
+    assign(taskActions, { loadSegments })
+);
 
-export default connect(mapStateToProps, actions)(TaskList);
+export default connect(
+    mapStateToProps,
+    assign(taskActions, { loadSegments, resetSegments })
+)(TaskList);

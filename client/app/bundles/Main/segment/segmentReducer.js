@@ -2,6 +2,10 @@ import { uniqueId, remove, assign } from 'lodash';
 import { default as swal } from 'sweetalert2';
 
 import {
+    RESET_SEGMENTS,
+    LOAD_SEGMENTS,
+    LOAD_SEGMENTS_SUCCESS,
+    LOAD_SEGMENTS_FAILURE,
     ADD_SEGMENT,
     ADD_SEGMENT_SUCCESS,
     ADD_SEGMENT_FAILURE,
@@ -16,6 +20,28 @@ import {
 const segments = (state = [], action) => {
     console.log('[debug] action.type', action.type);
     switch (action.type) {
+        //RESET
+        case RESET_SEGMENTS:
+            return [];
+
+        //LOAD
+        case LOAD_SEGMENTS:
+            //start by resetting the state
+            //to avoid having wrong segments while the data is loading
+            return [];
+
+        case LOAD_SEGMENTS_SUCCESS:
+            return action.payload;
+
+        case LOAD_SEGMENTS_FAILURE:
+            swal(
+                'Error!',
+                'An error occured while loading the times for the current tasks, sorry.',
+                'error'
+            );
+            return state;
+
+        //ADD
         case ADD_SEGMENT:
             return [
                 ...state,
@@ -31,18 +57,6 @@ const segments = (state = [], action) => {
                 }
             });
 
-        case UPDATE_SEGMENT:
-            return state.map(
-                segment =>
-                    segment.id === action.meta.segment.id
-                        ? assign({}, segment, action.meta.segment)
-                        : segment
-            );
-
-        case DELETE_SEGMENT:
-            remove(state, { id: action.meta.id });
-            return [...state];
-
         case ADD_SEGMENT_FAILURE:
             swal(
                 'Error!',
@@ -50,6 +64,15 @@ const segments = (state = [], action) => {
                 'error'
             );
             return state;
+
+        //UPDATE
+        case UPDATE_SEGMENT:
+            return state.map(
+                segment =>
+                    segment.id === action.meta.segment.id
+                        ? assign({}, segment, action.meta.segment)
+                        : segment
+            );
         case UPDATE_SEGMENT_FAILURE:
             swal(
                 'Error!',
@@ -57,6 +80,12 @@ const segments = (state = [], action) => {
                 'error'
             );
             return state;
+
+        //DELETE
+        case DELETE_SEGMENT:
+            remove(state, { id: action.meta.id });
+            return [...state];
+
         case DELETE_SEGMENT_FAILURE:
             swal(
                 'Error!',

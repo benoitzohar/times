@@ -13,3 +13,5 @@ export const DELETE_TASK_FAILURE = 'DELETE_TASK_FAILURE';
 export const SELECT_TASK = 'SELECT_TASK';
 export const SELECT_TASK_SUCCESS = 'SELECT_TASK_SUCCESS';
 export const SELECT_TASK_FAILURE = 'SELECT_TASK_FAILURE';
+
+export const TASK_PREFIX = 'tmp-task-';

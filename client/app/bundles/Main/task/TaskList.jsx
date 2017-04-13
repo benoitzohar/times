@@ -20,13 +20,22 @@ function TaskList(props) {
                     current={task.id === props.params.currentTask.id}
                     onTitleChange={title =>
                         props.updateTask(assign(task, { title }))}
-                    onSelect={() => props.selectTask(task)}
+                    onSelect={() => {
+                        props.selectTask(task);
+                        props.loadSegments(task.id);
+                    }}
                     onDelete={() => props.deleteTask(task.id)}
                 />
             ))}
             <button
                 {...classes('button', 'add')}
-                onClick={() => props.addTask({ title: 'New task' })}
+                onClick={() => {
+                    const task = { title: 'New task' };
+                    const res = props.addTask(task);
+                    console.log('[debug] res', res);
+                    props.selectTask(task);
+                    props.resetSegments();
+                }}
             >
                 Add
             </button>
@@ -40,7 +49,9 @@ TaskList.propTypes = {
     addTask: PropTypes.func.isRequired,
     updateTask: PropTypes.func.isRequired,
     deleteTask: PropTypes.func.isRequired,
-    selectTask: PropTypes.func.isRequired
+    selectTask: PropTypes.func.isRequired,
+
+    loadSegments: PropTypes.func.isRequired
 };
 
 export default TaskList;

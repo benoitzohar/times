@@ -12,7 +12,8 @@ import {
     DELETE_TASK_FAILURE,
     SELECT_TASK,
     SELECT_TASK_SUCCESS,
-    SELECT_TASK_FAILURE
+    SELECT_TASK_FAILURE,
+    TASK_PREFIX
 } from './taskConstants';
 
 //get the header object with the code from the state
@@ -25,7 +26,7 @@ const headers = function(state) {
 
 export const addTask = task => {
     //generate temporary ID for the task
-    const temporaryId = 'tmp-task-' + uniqueId();
+    const temporaryId = TASK_PREFIX + uniqueId();
 
     return {
         [CALL_API]: {
@@ -47,22 +48,29 @@ export const addTask = task => {
         }
     };
 };
-export const updateTask = task => ({
-    [CALL_API]: {
-        types: [
-            {
-                type: UPDATE_TASK,
-                meta: { task }
-            },
-            UPDATE_TASK_SUCCESS,
-            UPDATE_TASK_FAILURE
-        ],
-        endpoint: `/tasks/${task.id}`,
-        method: 'PUT',
-        headers,
-        body: JSON.stringify(task)
+export const updateTask = task => {
+    //do not save if the segment has not been created yet
+    if (!task.id || startsWith(task.id, TASK_PREFIX)) {
+        return;
     }
-});
+
+    return {
+        [CALL_API]: {
+            types: [
+                {
+                    type: UPDATE_TASK,
+                    meta: { task }
+                },
+                UPDATE_TASK_SUCCESS,
+                UPDATE_TASK_FAILURE
+            ],
+            endpoint: `/tasks/${task.id}`,
+            method: 'PUT',
+            headers,
+            body: JSON.stringify(task)
+        }
+    };
+};
 
 export const deleteTask = id => ({
     [CALL_API]: {
