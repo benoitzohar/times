@@ -12,32 +12,34 @@ function TaskList(props) {
 
     return (
         <div {...classes()}>
-            {props.tasks.map(task => (
-                <Task
-                    key={task.id}
-                    title={task.title}
-                    duration={task.duration}
-                    current={task.id === props.params.currentTask.id}
-                    onTitleChange={title =>
-                        props.updateTask(assign(task, { title }))}
-                    onSelect={() => {
-                        props.selectTask(task);
-                        props.loadSegments(task.id);
-                    }}
-                    onDelete={() => props.deleteTask(task.id)}
-                />
-            ))}
+            <div {...classes('wrapper')}>
+                {props.tasks.map(task => (
+                    <Task
+                        key={task.id}
+                        title={task.title}
+                        duration={task.duration}
+                        current={task.id === props.params.currentTask.id}
+                        onTitleChange={title =>
+                            props.updateTask(assign(task, { title }))}
+                        onSelect={() => {
+                            props.selectTask(task);
+                            props.loadSegments(task.id);
+                        }}
+                        onDelete={() => props.deleteTask(task.id)}
+                    />
+                ))}
+            </div>
             <button
                 {...classes('button', 'add')}
                 onClick={() => {
                     const task = { title: 'New task' };
                     const res = props.addTask(task);
-                    console.log('[debug] res', res);
+
                     props.selectTask(task);
                     props.resetSegments();
                 }}
             >
-                Add
+                New Task
             </button>
         </div>
     );

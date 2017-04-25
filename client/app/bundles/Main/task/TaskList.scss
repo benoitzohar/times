@@ -1,15 +1,27 @@
 .taskList {
 
     @extend .col-s-3;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 
-    color: red;
+
+    &__wrapper {
+        flex: 1;
+        display: flex;
+        overflow-y: auto;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
 
     &__button {
 
         @extend .btn;
 
         &--add {
-
+            width: 100%;
+            flex-grow: 0;
+            flex-shrink: 0;
         }
     }
 }

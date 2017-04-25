@@ -1,4 +1,5 @@
 import { uniqueId, remove, assign } from 'lodash';
+import { default as swal } from 'sweetalert2';
 
 import {
     ADD_TASK,
@@ -32,9 +33,9 @@ const tasks = (state = [], action) => {
         case UPDATE_TASK:
             return state.map(
                 task =>
-                    task.id === action.meta.task.id
+                    (task.id === action.meta.task.id
                         ? assign({}, task, action.meta.task)
-                        : task
+                        : task)
             );
 
         case DELETE_TASK:

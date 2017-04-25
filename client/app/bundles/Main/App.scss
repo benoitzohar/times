@@ -1,6 +1,6 @@
 //Define style for App
 
-.main {
+.app {
     position: absolute;
     top:0;
     bottom:0;
@@ -10,4 +10,10 @@
     background-image: url(/assets/bg-pattern.svg);
 
     overflow:hidden;
+
+    &__row {
+        @extend .row;
+        @extend .around-s;
+        height: 100%;
+    }
 }
