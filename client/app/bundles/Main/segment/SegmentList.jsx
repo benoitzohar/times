@@ -7,7 +7,7 @@ import Segment from './Segment';
 function SegmentList(props) {
     //only show visible segments
     const segments = props.segments.map(
-        segment => segment.enddate ? segment : null
+        segment => (segment.enddate ? segment : null)
     );
 
     //configure the bem helper to get proper classe names
@@ -19,7 +19,7 @@ function SegmentList(props) {
         <div {...classes()}>
             {segments.map(
                 segment =>
-                    segment
+                    (segment
                         ? <Segment
                               key={segment.id}
                               title={segment.title}
@@ -30,7 +30,7 @@ function SegmentList(props) {
                                   )}
                               onDelete={() => props.deleteSegment(segment.id)}
                           />
-                        : null
+                        : null)
             )}
         </div>
     );

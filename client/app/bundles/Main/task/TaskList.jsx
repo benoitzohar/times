@@ -12,6 +12,18 @@ function TaskList(props) {
 
     return (
         <div {...classes()}>
+            <button
+                {...classes('button', 'add')}
+                onClick={() => {
+                    const task = { title: 'New task' };
+                    const res = props.addTask(task);
+
+                    props.selectTask(task);
+                    props.resetSegments();
+                }}
+            >
+                New Task
+            </button>
             <div {...classes('wrapper')}>
                 {props.tasks.map(task => (
                     <Task
@@ -29,18 +41,6 @@ function TaskList(props) {
                     />
                 ))}
             </div>
-            <button
-                {...classes('button', 'add')}
-                onClick={() => {
-                    const task = { title: 'New task' };
-                    const res = props.addTask(task);
-
-                    props.selectTask(task);
-                    props.resetSegments();
-                }}
-            >
-                New Task
-            </button>
         </div>
     );
 }

@@ -45,21 +45,22 @@ const tasks = (state = [], action) => {
         case ADD_TASK_FAILURE:
             swal(
                 'Error!',
-                'An error occured while creating the time, sorry.',
+                'An error occured while creating the task, sorry.',
                 'error'
             );
             return state;
         case UPDATE_TASK_FAILURE:
+            console.log('[debug] action', action);
             swal(
                 'Error!',
-                'An error occured while saving the time, sorry.',
+                'An error occured while saving the task, sorry.',
                 'error'
             );
             return state;
         case DELETE_TASK_FAILURE:
             swal(
                 'Error!',
-                'An error occured while deleting the time, sorry.',
+                'An error occured while deleting the task, sorry.',
                 'error'
             );
             return state;

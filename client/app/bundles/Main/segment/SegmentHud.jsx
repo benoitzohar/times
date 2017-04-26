@@ -13,10 +13,6 @@ class SegmentHud extends React.Component {
             name: 'segmentHud'
         });
 
-        this.state = {
-            elapsed: '00:00:00'
-        };
-
         //scope binding
         [
             'initSegment',
@@ -25,20 +21,30 @@ class SegmentHud extends React.Component {
             'pause',
             'finish',
             'setTitle',
-            'tick'
+            'tick',
+            'getElapsed'
         ].map(fn => {
             this[fn] = this[fn].bind(this);
         });
 
         this.initSegment(props);
+
+        this.state = {
+            elapsed: this.getElapsed()
+        };
+
+        console.log('[debug] init', this.state.elapsed);
     }
 
     componentDidMount() {
+        console.log('[debug] didMount');
         this.initTick(false);
     }
 
     componentWillUpdate(nextProps) {
+        console.log('[debug] willUpdate');
         this.initSegment(nextProps);
+        this.state.elapsed = this.getElapsed();
         this.initTick(true);
 
         //reset the elpased time
@@ -122,20 +128,23 @@ class SegmentHud extends React.Component {
         }
     }
 
-    tick() {
+    getElapsed() {
         let elapsedMs = 0;
+
         if (this.segment.startdate) {
             const duration = this.segment.duration || 0;
-            elapsedMs = duration +
-                (new Date() - new Date(this.segment.startdate));
+            elapsedMs =
+                duration + (new Date() - new Date(this.segment.startdate));
         } else if (this.segment.duration) {
             elapsedMs = this.segment.duration;
         }
 
-        const elapsed = millisecondDurationToHumanReadableString(elapsedMs);
+        return millisecondDurationToHumanReadableString(elapsedMs);
+    }
 
+    tick() {
         this.setState({
-            elapsed
+            elapsed: this.getElapsed()
         });
     }
 
