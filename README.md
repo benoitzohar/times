@@ -3,8 +3,6 @@
 # Times
 [times.poi.lu](http://times.poi.lu)
 
-*[WIP, do not use yet]*
-
 Times is a simple web app that allows you to track time spent on some tasks.
 
 It has a Ruby on Rails back-end which provides a REST API and a React (Redux) front-end.

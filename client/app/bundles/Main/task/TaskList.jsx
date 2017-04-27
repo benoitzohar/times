@@ -3,12 +3,16 @@ import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { assign } from 'lodash';
 import Task from './Task';
+import { showWelcomeModal } from '../helpers';
 
 function TaskList(props) {
     //configure the bem helper to get proper classe names
     const classes = new BEMHelper({
         name: 'taskList'
     });
+
+    //show welcome modal only if necessary
+    showWelcomeModal();
 
     return (
         <div {...classes()}>
