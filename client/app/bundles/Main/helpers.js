@@ -29,8 +29,7 @@ export function showWelcomeModal() {
             title: 'Welcome to Times!',
             html: '<b>Track easily the time spent on a task or a project.</b>' +
                 '<br><br>We created a session for you. If you want to access this tasks again later, just save the current URL or add this page to your bookmarks.',
-            width: 600,
-            padding: 100
+            width: 600
         });
     }
 }
