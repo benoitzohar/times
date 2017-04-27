@@ -50,7 +50,6 @@ const tasks = (state = [], action) => {
             );
             return state;
         case UPDATE_TASK_FAILURE:
-            console.log('[debug] action', action);
             swal(
                 'Error!',
                 'An error occured while saving the task, sorry.',

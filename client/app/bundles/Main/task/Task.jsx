@@ -22,12 +22,13 @@ function Task(props) {
                 type="text"
                 value={props.title}
                 onChange={evt => props.onTitleChange(evt.target.value)}
+                onClick={evt => evt.stopPropagation()}
             />
             <div {...classes('duration')}>{duration}</div>
             <button
-                {...classes('button', 'delete')}
-                className="btn icon icon-trash"
+                {...classes('button', 'delete', 'btn icon icon-trash')}
                 onClick={evt => {
+                    evt.stopPropagation();
                     swal({
                         title: 'Are you sure?',
                         text: "You won't be able to revert this!",
@@ -47,7 +48,7 @@ function Task(props) {
 
 Task.propTypes = {
     title: PropTypes.string.isRequired,
-    duration: PropTypes.number.isRequired,
+    duration: PropTypes.number,
     current: PropTypes.bool,
     onTitleChange: PropTypes.func.isRequired,
     onSelect: PropTypes.func.isRequired,

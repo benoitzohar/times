@@ -32,17 +32,13 @@ class SegmentHud extends React.Component {
         this.state = {
             elapsed: this.getElapsed()
         };
-
-        console.log('[debug] init', this.state.elapsed);
     }
 
     componentDidMount() {
-        console.log('[debug] didMount');
         this.initTick(false);
     }
 
     componentWillUpdate(nextProps) {
-        console.log('[debug] willUpdate');
         this.initSegment(nextProps);
         this.state.elapsed = this.getElapsed();
         this.initTick(true);
@@ -56,7 +52,7 @@ class SegmentHud extends React.Component {
 
     initSegment(props) {
         //save segment
-        this.segment = props.segment ? props.segment : { title: '' };
+        this.segment = props.segment ? props.segment : { title: 'Untitled' };
     }
 
     initTick(componentHasBeenMounted) {
@@ -81,8 +77,9 @@ class SegmentHud extends React.Component {
             ? this.segment.duration
             : 0;
         const newDuration = this.segment && this.segment.startdate
-            ? new Date() - this.segment.startdate
+            ? new Date() - new Date(this.segment.startdate)
             : 0;
+
         return currentDuration + newDuration;
     }
 
@@ -113,6 +110,7 @@ class SegmentHud extends React.Component {
     finish() {
         this.props.updateSegment(
             assign(this.segment, {
+                startdate: null,
                 duration: this.getDuration(),
                 enddate: new Date()
             })
@@ -151,15 +149,15 @@ class SegmentHud extends React.Component {
     render() {
         return (
             <div {...this.classes()}>
+                <div {...this.classes('mainCounter')}>
+                    {this.state.elapsed}
+                </div>
                 <input
                     {...this.classes('input')}
                     type="text"
                     value={this.segment.title}
                     onChange={this.setTitle}
                 />
-                <div {...this.classes('mainCounter')}>
-                    {this.state.elapsed}
-                </div>
                 {!this.segment.startdate
                     ? <button
                           {...this.classes('button', 'play', 'icon-play')}

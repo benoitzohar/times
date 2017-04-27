@@ -24,23 +24,21 @@ function TaskList(props) {
             >
                 New Task
             </button>
-            <div {...classes('wrapper')}>
-                {props.tasks.map(task => (
-                    <Task
-                        key={task.id}
-                        title={task.title}
-                        duration={task.duration}
-                        current={task.id === props.params.currentTask.id}
-                        onTitleChange={title =>
-                            props.updateTask(assign(task, { title }))}
-                        onSelect={() => {
-                            props.selectTask(task);
-                            props.loadSegments(task.id);
-                        }}
-                        onDelete={() => props.deleteTask(task.id)}
-                    />
-                ))}
-            </div>
+            {props.tasks.map(task => (
+                <Task
+                    key={task.id}
+                    title={task.title}
+                    duration={task.duration}
+                    current={task.id === props.params.currentTask.id}
+                    onTitleChange={title =>
+                        props.updateTask(assign(task, { title }))}
+                    onSelect={() => {
+                        props.selectTask(task);
+                        props.loadSegments(task.id);
+                    }}
+                    onDelete={() => props.deleteTask(task.id)}
+                />
+            ))}
         </div>
     );
 }

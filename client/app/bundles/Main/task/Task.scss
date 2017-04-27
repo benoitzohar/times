@@ -1,24 +1,53 @@
 .task {
 
-    @extend .end-s;
+    @extend .row;
 
+    position: relative;
     border: $border-size $border-type $default-color;
     border-radius: $border-radius;
     background-color: rgba($default-color, 0.2);
-    margin-bottom: 4px;
+    margin-bottom: $inline-padding;
     cursor: pointer;
     padding: $padding;
 
     &__input {
+        flex-basis: 100%;
         border: none;
         cursor: pointer;
         background-color: rgba($default-color, 0.2);
         color: white;
         padding: $padding;
+        font-weight: bold;
+        cursor: text;
+    }
+
+    &__duration {
+        flex-grow: 1;
+        color: white;
+        margin-top: $padding;
+        padding-left: $padding;
     }
 
     &--selected {
         background-color: $default-color;
+
+        // small triangle to show that the
+        // taks is selected (only in not-mobile)
+        $triangle_size: 10px;
+        @media only screen and (min-width: 62em) {
+            &:after {
+                content: '';
+                position: absolute;
+                top: calc(50% - #{$triangle_size});
+                left: 100%;
+                width: 0;
+                height: 0;
+                border-top: $triangle_size solid transparent;
+                border-bottom: $triangle_size solid transparent;
+                border-left: $triangle_size solid $default-color;
+                clear: both;
+            }
+        }
 
         &__input {
             cursor: text;
@@ -33,6 +62,8 @@
 
         &--delete {
 
+            flex-grow: 0;
+            margin-top: $padding;
             border-color: $main-color;
             color: $main-color;
             opacity: 0;

@@ -18,12 +18,10 @@ import {
 } from './segmentConstants';
 
 const segments = (state = [], action) => {
-    console.log('[debug] action.type', action.type);
     switch (action.type) {
         //RESET
         case RESET_SEGMENTS:
             return [];
-
         //LOAD
         case LOAD_SEGMENTS:
             //start by resetting the state
@@ -40,7 +38,6 @@ const segments = (state = [], action) => {
                 'error'
             );
             return state;
-
         //ADD
         case ADD_SEGMENT:
             return [
@@ -64,14 +61,13 @@ const segments = (state = [], action) => {
                 'error'
             );
             return state;
-
         //UPDATE
         case UPDATE_SEGMENT:
             return state.map(
                 segment =>
-                    segment.id === action.meta.segment.id
+                    (segment.id === action.meta.segment.id
                         ? assign({}, segment, action.meta.segment)
-                        : segment
+                        : segment)
             );
         case UPDATE_SEGMENT_FAILURE:
             swal(
@@ -80,7 +76,6 @@ const segments = (state = [], action) => {
                 'error'
             );
             return state;
-
         //DELETE
         case DELETE_SEGMENT:
             remove(state, { id: action.meta.id });

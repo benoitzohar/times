@@ -1,5 +1,8 @@
 .segmentPanel {
 
     @extend .col-s-8;
+    @extend .center-s;
+
+    padding: $padding;
 
 }

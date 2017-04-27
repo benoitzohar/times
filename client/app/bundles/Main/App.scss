@@ -1,17 +1,14 @@
 //Define style for App
 
-.app {
-
-    position: absolute;
-    top:0;
-    bottom:0;
-    left:0;
-    right:0;
-    padding: $padding;
+body {
     background-color: #f0f0f0;
     background-image: url(/assets/bg-pattern.svg);
+}
 
-    overflow:hidden;
+.app {
+
+    @extend .container;
+    padding: $padding;
 
     &__row {
         @extend .row;

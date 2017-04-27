@@ -21,11 +21,13 @@
 $colors: #FC585A #00B991;
 $main-color: #FC585A;
 $default-color: #00B991;
+$font-family-headers: 'Quicksand', "Helvetica Neue", Arial, sans-serif;
+$font-family: 'Raleway', "Helvetica Neue", Arial, sans-serif;
 $border-size: 1px;
 $border-type: solid;
 $border-radius: 2px;
 $padding: 1rem;
-$inline-padding: .2rem;
+$inline-padding: .6rem;
 
 // Load ProntoCSS Sass files
 @import "../../../client/node_modules/prontocss/src/pronto";

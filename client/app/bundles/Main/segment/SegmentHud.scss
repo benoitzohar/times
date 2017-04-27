@@ -4,13 +4,23 @@
 
     background-color: $subtle-color;
 
-    &__input {
-
-    }
+    margin: auto 4em;
+    padding: $padding;
 
     &__mainCounter {
-
+        font-size: 3rem;
     }
+
+    &__input {
+        border: none;
+        cursor: pointer;
+        background-color: rgba($default-color, 0.2);
+        color: black;
+        padding: $padding;
+        font-weight: bold;
+        cursor: text;
+    }
+
 
     &__button {
 

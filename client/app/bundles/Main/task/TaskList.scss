@@ -5,24 +5,15 @@
 
     display: flex;
     flex-direction: column;
-    overflow: hidden;
-
-
-    &__wrapper {
-        flex: 1;
-        display: flex;
-        overflow-y: auto;
-        flex-direction: column;
-        justify-content: flex-end;
-    }
 
     &__button {
 
         @extend .btn;
 
+        margin-bottom: $inline-padding;
+
         &--add {
-            flex-grow: 0;
-            flex-shrink: 0;
+            height: 3em;
         }
     }
 }

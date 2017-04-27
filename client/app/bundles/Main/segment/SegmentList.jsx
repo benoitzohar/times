@@ -6,9 +6,10 @@ import Segment from './Segment';
 
 function SegmentList(props) {
     //only show visible segments
-    const segments = props.segments.map(
-        segment => (segment.enddate ? segment : null)
-    );
+    let segments = props.segments.filter(segment => !!segment.enddate);
+
+    //order by end date
+    segments.sort((a, b) => new Date(a.enddate) - new Date(b.enddate));
 
     //configure the bem helper to get proper classe names
     const classes = new BEMHelper({
