@@ -158,21 +158,27 @@ class SegmentHud extends React.Component {
                     value={this.segment.title}
                     onChange={this.setTitle}
                 />
-                {!this.segment.startdate
-                    ? <button
-                          {...this.classes('button', 'play', 'icon-play')}
-                          onClick={this.play}
-                      />
-                    : <button
-                          {...this.classes('button', 'pause', 'icon-pause')}
-                          onClick={this.pause}
-                      />}
-                {this.segment.startdate || this.segment.duration
-                    ? <button
-                          {...this.classes('button', 'finish', 'icon-check')}
-                          onClick={this.finish}
-                      />
-                    : null}
+                <div {...this.classes('buttons')}>
+                    {!this.segment.startdate
+                        ? <button
+                              {...this.classes('button', 'play', 'icon-play')}
+                              onClick={this.play}
+                          />
+                        : <button
+                              {...this.classes('button', 'pause', 'icon-pause')}
+                              onClick={this.pause}
+                          />}
+                    {this.segment.startdate || this.segment.duration
+                        ? <button
+                              {...this.classes(
+                                  'button',
+                                  'finish',
+                                  'icon-check'
+                              )}
+                              onClick={this.finish}
+                          />
+                        : null}
+                </div>
             </div>
         );
     }

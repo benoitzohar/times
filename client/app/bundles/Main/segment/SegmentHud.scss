@@ -2,52 +2,58 @@
 
     $subtle-color: rgba($default-color, 0.1);
 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: $subtle-color;
-
     margin: auto 4em;
     padding: $padding;
 
     &__mainCounter {
-        font-size: 3rem;
+        font-size: 4rem;
     }
 
     &__input {
         border: none;
         cursor: pointer;
-        background-color: rgba($default-color, 0.2);
+        background-color: rgba($default-color, 0.1);
         color: black;
         padding: $padding;
         font-weight: bold;
         cursor: text;
+        width: 50%;
+        margin-top: $padding;
     }
 
 
     &__button {
 
-        font-size: 28px;
-        line-height: 36px;
-        height: 40px;
-        width: 40px;
-        border-radius: 40px;
-        border: 1px solid $default-color;
+        $button_size: 60px;
+
+        height: $button_size;
+        width: $button_size;
+        border-radius: $button_size / 2;
+        border: $border-size * 2 $border-type $default-color;
         background: none;
         color: $default-color;
         outline: none;
         cursor: pointer;
+        margin: $padding;
 
         &:hover {
             background-color: $subtle-color;
         }
 
         &--play {
-
+            font-size: $button_size - 12;
+            line-height: $button_size - 4;
         }
+        &--finish,
         &--pause {
-
+            font-size: $button_size - 20;
+            line-height: $button_size - 3;
         }
-        &--finish {
 
-        }
     }
 
 }
