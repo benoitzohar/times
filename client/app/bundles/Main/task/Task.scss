@@ -13,7 +13,6 @@
     &__input {
         flex-basis: 100%;
         border: none;
-        cursor: pointer;
         background-color: rgba($default-color, 0.2);
         color: white;
         padding: $padding;
@@ -66,8 +65,12 @@
             margin-top: $padding;
             border-color: $main-color;
             color: $main-color;
-            opacity: 0;
             transition: opacity 0.2s;
+
+            //only hide for non-mobile
+            @media only screen and (min-width: 62em) {
+                opacity: 0;
+            }
 
             &:hover {
                 background-color: $main-color;

@@ -1,21 +1,70 @@
 .segment {
 
-    color: green;
+    display: flex;
+    align-items: center;
+    background-color: $default-color;
+    margin: auto;
+    padding: 0;
+    width: calc(100% - #{$padding/3*2});
+    color: white;
+    border-bottom: 1px solid rgba($default-color, 0.1);
+    margin-bottom: 1px;
+    padding: $padding/3;
+
+    @media only screen and (min-width: 62em) {
+        padding: $padding;
+        margin: auto 4em 1px 4em;
+        width: auto;
+    }
 
     &__input {
+        flex-grow: 0;
+        margin-left: $padding;
+        border: none;
+        background-color: rgba($default-color, 0.2);
+        color: white;
+        padding: $padding;
+        font-weight: bold;
 
+        &:hover {
+            background-color: white;
+            color: black;
+            border-radius: $border-radius;
+        }
+    }
+
+    &__duration {
+        flex-grow: 1;
+        margin-left: $padding;
     }
 
     &__button {
 
         @extend .btn;
 
-        &--select {
+
+        &--delete {
+            flex-grow: 0;
+            border-color: $main-color;
+            color: $main-color;
+            transition: opacity 0.2s;
+
+            //only hide for non-mobile
+            @media only screen and (min-width: 62em) {
+                opacity: 0;
+            }
+
+            &:hover {
+                background-color: $main-color;
+            }
 
         }
-        &--add {
 
-        }
     }
 
+    &:hover {
+        .segment__button--delete {
+            opacity: 1;
+        }
+    }
 }

@@ -6,8 +6,15 @@
     flex-direction: column;
     align-items: center;
     background-color: $subtle-color;
-    margin: auto 4em;
-    padding: $padding;
+    margin: auto;
+    padding: 0;
+    width: 100%;
+
+    @media only screen and (min-width: 62em) {
+        padding: $padding;
+        margin: auto 4em;
+        width: auto;
+    }
 
     &__mainCounter {
         font-size: 4rem;
