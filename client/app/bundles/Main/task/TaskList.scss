@@ -1,6 +1,8 @@
 .taskList {
 
-    @extend .col-s-3;
+    @extend .col-s-12;
+    @extend .col-m-4;
+
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -19,7 +21,6 @@
         @extend .btn;
 
         &--add {
-            width: 100%;
             flex-grow: 0;
             flex-shrink: 0;
         }
